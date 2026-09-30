@@ -1,0 +1,595 @@
+/*
+ * Content styles for the service pages (windshield repair, replacement,
+ * back glass, side window, mobile service).
+ *
+ * These mirror the safelite.com rules the pages rely on. Class names follow
+ * the reference markup (.content-block -> .contentBlock, etc.) so sibling and
+ * :last-of-type rules behave exactly like the original. Element rules are
+ * wrapped in :where(.page) to keep element-level specificity, as on the
+ * reference, so block classes can override them the same way.
+ */
+
+/* ---------- Typography ---------- */
+
+:where(.page) h1 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 44px;
+  letter-spacing: 0.03em;
+  color: #000;
+}
+
+:where(.page) h2 {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 35px;
+  letter-spacing: 0.03em;
+  color: #000;
+}
+
+:where(.page) * + h2 {
+  margin-top: 10px;
+}
+
+:where(.page) h3 {
+  padding-bottom: 10px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.03em;
+  color: #db0020;
+}
+
+:where(.page) h4 {
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0.03em;
+  color: #000;
+}
+
+:where(.page) p + h4 {
+  padding-top: 10px;
+}
+
+:where(.page) p {
+  padding-bottom: 10px;
+}
+
+:where(.page) strong {
+  font-weight: 700;
+  color: #000;
+}
+
+:where(.page) a {
+  font-weight: 500;
+  color: #0070d1;
+  text-decoration: underline rgba(0, 112, 209, 0);
+  transition: all 0.15s ease-out;
+}
+
+:where(.page) a:hover {
+  text-decoration: underline #0070d1;
+}
+
+@media (min-width: 768px) {
+  :where(.page) h2 {
+    text-align: center;
+  }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 177px;
+  height: 56px;
+  padding: 0 3rem;
+  border: 1px solid #0070d1;
+  border-radius: 16px;
+  background: #0070d1;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0063ad;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #95c2e9;
+  outline-offset: 2px;
+}
+
+.btnCenter {
+  margin: 0 auto;
+}
+
+/* ---------- Hero with half image ---------- */
+
+.heroHalfImage {
+  margin: 0 0 30px;
+}
+
+.heroHalfImage .heroContent > div {
+  max-width: 510px;
+  padding: 20px 15px 0;
+}
+
+.heroContent > .contentBlock:last-of-type {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .heroHalfImage {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    margin-bottom: 0;
+  }
+
+  .heroHalfImage .heroContent,
+  .heroHalfImage .heroImageWrapper {
+    position: relative;
+    flex: 0 0 auto;
+    width: 50%;
+    padding: 0 15px;
+    overflow: hidden;
+  }
+
+  .heroHalfImage .heroContent::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .heroHalfImage .heroContent > div {
+    float: right;
+    clear: both;
+    width: 100%;
+    max-width: 480px;
+    padding: 40px 0 20px;
+  }
+}
+
+/* ---------- Images ---------- */
+
+.enhancedImage {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageSpan {
+  display: block;
+  width: 100%;
+}
+
+.enhancedImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+/* The hero photo is a fixed 585px wide and cropped by its column */
+@media (min-width: 768px) and (max-width: 990px) {
+  .heroImage {
+    width: 585px;
+  }
+
+  .heroImage .imageSpan {
+    padding-top: var(--hero-tablet-ratio);
+  }
+}
+
+@media (min-width: 991px) {
+  .heroImage {
+    width: 585px;
+  }
+
+  .heroImage .imageSpan {
+    padding-top: var(--hero-desktop-ratio);
+  }
+}
+
+/* ---------- Content blocks ---------- */
+
+.contentBlock {
+  max-width: 510px;
+  margin: 0 auto;
+  padding: 0 15px 24px;
+}
+
+.contentBlock ul {
+  padding-bottom: 10px;
+  list-style: none;
+}
+
+.contentBlock ul li {
+  position: relative;
+  padding: 0 0 10px 35px;
+}
+
+.contentBlock ul li::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 3px;
+  background: #525656;
+}
+
+.contentBlock ol {
+  padding: 0 0 10px 25px;
+  list-style: decimal;
+}
+
+.contentBlock ol li {
+  padding: 0 0 10px 10px;
+}
+
+.grayBox {
+  margin-bottom: 48px;
+  padding: 48px 0;
+  background: #f4f4f4;
+}
+
+.contentContainerWide,
+.contentHalves,
+.narrowLeftHalves {
+  max-width: 510px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.contentContainerWide .contentBlock,
+.contentContainer .contentBlock {
+  padding: 0 0 20px;
+}
+
+.contentContainer .enhancedImage {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .contentBlock {
+    max-width: 750px;
+  }
+
+  .contentContainerWide {
+    max-width: 1020px;
+  }
+
+  .contentContainerWide .contentBlock {
+    max-width: none;
+  }
+
+  .contentHalves,
+  .narrowLeftHalves {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-width: 1020px;
+  }
+
+  .contentHalves .contentContainer {
+    width: calc(50% - 15px);
+  }
+
+  .contentHalves h2 {
+    text-align: left;
+  }
+
+  .narrowLeftHalves .contentContainerLeft {
+    width: 37%;
+    padding-right: 15px;
+  }
+
+  .narrowLeftHalves .contentContainerRight {
+    width: 63%;
+    padding-top: 5px;
+    padding-left: 15px;
+  }
+
+  .contentContainer .enhancedImage {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .contentContainer:not(:last-of-type) .contentBlock:last-of-type {
+    padding-bottom: 0;
+  }
+
+  .contentContainer + .contentContainer .enhancedImage:first-child {
+    margin-top: 10px;
+    padding-bottom: 20px;
+  }
+}
+
+/* ---------- Horizontal rules ---------- */
+
+.horizontalRule {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 510px;
+  margin: 0 auto 30px;
+  padding: 0 15px;
+}
+
+.grayLine > div,
+.grayNotch > div,
+.sectionDivider > div {
+  width: 100%;
+  height: 1px;
+  background: #cacbcc;
+}
+
+.sectionDivider {
+  margin: 10px auto 30px;
+}
+
+/* Down-pointing notch drawn as two stacked triangles */
+.grayNotch::before,
+.grayNotch::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border-style: solid;
+  border-width: 7px 10px 0;
+  border-color: #cacbcc transparent;
+}
+
+.grayNotch::after {
+  top: 0;
+  border-top-color: #fff;
+}
+
+.grayBox .grayNotch::after {
+  border-top-color: #f4f4f4;
+}
+
+.centerRed > div,
+.leftRed > div {
+  flex: 0 0 auto;
+  width: 120px;
+  height: 5px;
+  background: #db0020;
+}
+
+.contentBlock + .centerRed,
+.contentBlock + .leftRed {
+  margin-top: -30px;
+}
+
+.contentContainer .horizontalRule {
+  padding: 0;
+}
+
+.contentContainer .contentBlock + .centerRed,
+.contentContainer .contentBlock + .leftRed {
+  margin-top: -20px;
+}
+
+@media (min-width: 768px) {
+  .horizontalRule {
+    max-width: 1020px;
+  }
+
+  .centerRed {
+    justify-content: center;
+  }
+}
+
+/* ---------- YouTube embed ---------- */
+
+.youtubeWidget {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto 30px;
+  background: #000;
+}
+
+.videoSpan {
+  display: block;
+}
+
+.youtubeWidget iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- Navigation cards ---------- */
+
+.cardsNavigation {
+  display: flex;
+  flex-direction: column;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.siteSecondary .cardsNavigation:last-child {
+  padding-bottom: 10px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  border: 2px solid #dcdcdc;
+  border-radius: 16px;
+  background: #fff;
+  letter-spacing: 0.03em;
+}
+
+.cardImage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+
+.cardImage .enhancedImage {
+  flex: 0 0 auto;
+}
+
+.cardIcon .cardImage {
+  height: 70px;
+  margin: 20px auto 0;
+}
+
+.cardContent {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 15px;
+  letter-spacing: 0.03em;
+}
+
+/* Lets long words overflow the column instead of widening it */
+.cardContent > * {
+  width: 100%;
+}
+
+.cardClickable {
+  font-weight: 400;
+  color: #525656;
+}
+
+.cardClickable:hover {
+  box-shadow: 0 3px 16px rgba(0, 0, 0, 0.3);
+  color: #525656;
+  text-decoration: none;
+}
+
+.cardClickable .linkLike {
+  font-weight: 500;
+  color: #0070d1;
+  transition: all 0.15s ease-out;
+}
+
+.cardClickable:hover .linkLike {
+  text-decoration: underline #0070d1;
+}
+
+@media (min-width: 768px) {
+  .cardsFifths .cardContainer,
+  .cardsFourths .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .cardsFifths .cardWrapper,
+  .cardsFourths .cardWrapper {
+    max-width: none;
+    margin: 0 0 30px 30px;
+  }
+
+  .cardsFifths .cardContent,
+  .cardsFourths .cardContent {
+    align-items: flex-start;
+    padding: 30px;
+  }
+
+  .cardsFifths .cardWrapper {
+    width: calc(20% - 24px);
+  }
+
+  .cardsFifths .cardWrapper:nth-child(5n + 1) {
+    margin-left: 0;
+  }
+
+  .cardsFourths .cardWrapper {
+    width: calc(25% - 22.5px);
+  }
+
+  .cardsFourths .cardWrapper:nth-child(4n + 1) {
+    margin-left: 0;
+  }
+}
+
+/* Must follow the rule above: on the reference this padding wins */
+.cardsNavigation .cardContent {
+  justify-content: space-around;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .cardsNavigation {
+    max-width: 510px;
+  }
+
+  .cardsNavigation .cardContainer {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .cardsNavigation .cardWrapper {
+    width: auto;
+    max-width: 310px;
+    margin: 0 auto 30px 0;
+  }
+}
+
+/* ---------- Floating A.I. chat button ---------- */
+
+.floatingCta {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  padding: 0.75rem;
+  border-radius: 16px;
+  background: #db0020;
+  box-shadow:
+    0 1px 4px rgba(55, 56, 57, 0.08),
+    0 1px 2px rgba(55, 56, 57, 0.56);
+}
