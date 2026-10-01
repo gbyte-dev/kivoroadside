@@ -1,0 +1,118 @@
+/*
+ * Map card used only on the commercial page. Mirrors the safelite.com rules
+ * for ".cards-wholes.cards-wholes-reversed": text on the left and the map on
+ * the right from 768px; text above the map (no card fill) on mobile.
+ */
+
+.cardsWholes {
+  display: flex;
+  flex-direction: column;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  border: 2px solid #dcdcdc;
+  border-radius: 16px;
+  background: #fff;
+  letter-spacing: 0.03em;
+}
+
+.cardImage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+
+/* The map keeps its 455px width and is cropped by the card on narrow screens */
+.mapImage {
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: 455px;
+  overflow: hidden;
+}
+
+.mapImageSpan {
+  display: block;
+  width: 100%;
+  padding-top: 48.35165%;
+}
+
+.mapImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.cardContent {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 15px;
+  letter-spacing: 0.03em;
+}
+
+.cardContent > * {
+  width: 100%;
+}
+
+.cardContent p {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0 auto auto;
+  padding: 0 0 10px;
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .cardWrapper {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .mapImageSpan {
+    padding-top: 39.56044%;
+  }
+}
+
+@media (min-width: 768px) {
+  .cardsWholes {
+    flex-direction: row-reverse;
+  }
+
+  .cardWrapper {
+    flex-direction: row-reverse;
+    max-width: none;
+    margin: 0 0 30px;
+  }
+
+  .cardImage {
+    flex: 0 0 auto;
+    width: calc(50% - 15px);
+    margin: 0 30px 0 0;
+    border-radius: 5px 0 0 0;
+  }
+
+  .cardContent {
+    flex: 1 1 auto;
+    align-items: flex-start;
+    width: calc(50% - 15px);
+    padding: 30px;
+  }
+}

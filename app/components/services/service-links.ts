@@ -59,26 +59,39 @@ export const SERVICE_CARDS: NavCardData[] = [
   },
 ];
 
-// Icon cards used under "Why choose Safelite?"
-export const WHY_SAFELITE_CARDS: NavCardData[] = [
-  {
+// Icon cards used under "Why choose Safelite?". Each page shows four of them.
+export const WHY_SAFELITE_LINKS = {
+  reviews: {
     href: "/auto-glass-services/safelite-reviews",
     label: "Customer reviews",
     image: { src: "/image/services/icons/star-rating.png", alt: "", width: 69, height: 67, ratio: "97.10145%" },
   },
-  {
+  warranty: {
     href: "/national-lifetime-warranty",
     label: "Nationwide warranty",
     image: { src: "/image/services/icons/shield.png", alt: "", width: 55, height: 66, ratio: "120%" },
   },
-  {
+  mobileInShop: {
+    href: "/mobile-auto-glass-repair",
+    label: "Mobile and in-shop",
+    image: { src: "/image/services/icons/mobile-in-shop.png", alt: "", width: 104, height: 48, ratio: "46.15385%" },
+  },
+  advantage: {
     href: "/the-safelite-advantage",
     label: "Safelite Advantage",
     image: { src: "/image/services/icons/advantage.png", alt: "", width: 69, height: 57, ratio: "82.6087%" },
   },
-  {
+  recycling: {
     href: "/why-choose-safelite/glass-recycling",
     label: "Glass recycling",
     image: { src: "/image/services/icons/glass-recycling.png", alt: "", width: 69, height: 55, ratio: "79.71014%" },
   },
+} satisfies Record<string, NavCardData>;
+
+// The set shown on the mobile service page
+export const WHY_SAFELITE_CARDS: NavCardData[] = [
+  WHY_SAFELITE_LINKS.reviews,
+  WHY_SAFELITE_LINKS.warranty,
+  WHY_SAFELITE_LINKS.advantage,
+  WHY_SAFELITE_LINKS.recycling,
 ];

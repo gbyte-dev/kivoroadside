@@ -9,6 +9,9 @@ type NarrowLeftHalvesProps = {
   // Most rows wrap each side in a content block (adds 20px below). A few rows
   // on the reference use plain wrappers instead, so this can be turned off.
   contentBlock?: boolean;
+  // Wrapper for the heading side only; defaults to contentBlock. Some pages
+  // use a plain heading wrapper next to a content block of text.
+  headingContentBlock?: boolean;
   // On the reference, one row per page gets 1rem padding around its heading
   // column from a site-wide ID rule. Turn this on for that row.
   paddedLeftColumn?: boolean;
@@ -19,18 +22,20 @@ export default function NarrowLeftHalves({
   heading,
   children,
   contentBlock = true,
+  headingContentBlock = contentBlock,
   paddedLeftColumn = false,
 }: NarrowLeftHalvesProps) {
   const Wrapper = contentBlock ? ContentBlock : "div";
+  const HeadingWrapper = headingContentBlock ? ContentBlock : "div";
   return (
     <div className={styles.narrowLeftHalves}>
       <div
         className={cx(styles.contentContainer, styles.contentContainerLeft)}
         style={paddedLeftColumn ? { padding: "1rem" } : undefined}
       >
-        <Wrapper>
+        <HeadingWrapper>
           <h3>{heading}</h3>
-        </Wrapper>
+        </HeadingWrapper>
       </div>
       <div className={cx(styles.contentContainer, styles.contentContainerRight)}>
         <Wrapper>{children}</Wrapper>

@@ -1,7 +1,5 @@
-import Link from "next/link";
-import styles from "./services.module.css";
-import { cx } from "./class-names";
 import ContentBlock from "./content-block";
+import ServiceButton from "./service-button";
 import HorizontalRule from "./horizontal-rule";
 
 // "Trust the safety and reliability of Safelite" band: a notched gray line,
@@ -13,11 +11,11 @@ export default function TrustCta() {
         <HorizontalRule variant="gray-notch" />
         <ContentBlock style={{ textAlign: "center" }}>
           <h2>Trust the safety and reliability of Safelite </h2>
-          <Link className={cx(styles.btn, styles.btnCenter)} href="/schedule-service">
+          <ServiceButton href="/schedule-service" center>
             Get quote + schedule
-          </Link>
+          </ServiceButton>
           {/* The reference has a trailing non-breaking space here, which adds one line of height */}
-          {"  "}
+          {"\u00a0 "}
         </ContentBlock>
         <HorizontalRule variant="gray-line" />
       </div>

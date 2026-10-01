@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import styles from "./services.module.css";
 import { cx } from "./class-names";
 import ContentBlock from "./content-block";
@@ -10,12 +10,13 @@ type ContentHalvesProps = {
   // On the reference, one block per page gets 1rem padding around its left
   // column from a site-wide ID rule. Turn this on for that block.
   paddedLeftColumn?: boolean;
+  style?: CSSProperties;
 };
 
 // Two equal columns (each 50% minus 15px) from 768px; stacked below that.
-export default function ContentHalves({ left, right, paddedLeftColumn = false }: ContentHalvesProps) {
+export default function ContentHalves({ left, right, paddedLeftColumn = false, style }: ContentHalvesProps) {
   return (
-    <div className={styles.contentHalves}>
+    <div className={styles.contentHalves} style={style}>
       <div
         className={cx(styles.contentContainer, styles.contentContainerLeft)}
         style={paddedLeftColumn ? { padding: "1rem" } : undefined}

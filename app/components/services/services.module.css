@@ -65,6 +65,11 @@
   color: #000;
 }
 
+/* Some reference pages lack the bold rule, so their strong text stays at 500 */
+:where(.strongMedium) strong {
+  font-weight: 500;
+}
+
 :where(.page) a {
   font-weight: 500;
   color: #0070d1;
@@ -189,10 +194,11 @@
   height: auto;
 }
 
-/* The hero photo is a fixed 585px wide and cropped by its column */
+/* The hero photo has a fixed width (585px, or 1100px for wide photos) and is
+   cropped by its column. Sizes come from variables set by ServiceHero. */
 @media (min-width: 768px) and (max-width: 990px) {
   .heroImage {
-    width: 585px;
+    width: var(--hero-tablet-width);
   }
 
   .heroImage .imageSpan {
@@ -202,11 +208,21 @@
 
 @media (min-width: 991px) {
   .heroImage {
-    width: 585px;
+    width: var(--hero-desktop-width);
   }
 
   .heroImage .imageSpan {
     padding-top: var(--hero-desktop-ratio);
+  }
+}
+
+@media (min-width: 1201px) {
+  .heroImage {
+    width: var(--hero-wide-width);
+  }
+
+  .heroImage .imageSpan {
+    padding-top: var(--hero-wide-ratio);
   }
 }
 
@@ -253,6 +269,12 @@
   margin-bottom: 48px;
   padding: 48px 0;
   background: #f4f4f4;
+}
+
+/* A gray box that ends the secondary content is tighter and tucks under the next band */
+.siteSecondary .grayBox:last-child {
+  margin: 10px 0 -20px;
+  padding: 40px 0 30px;
 }
 
 .contentContainerWide,

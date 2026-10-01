@@ -60,7 +60,7 @@ function Secondary() {
 
 export default function MobileAutoGlassRepairPage() {
   return (
-    <ServicePageShell secondary={<Secondary />}>
+    <ServicePageShell secondary={<Secondary />} strongWeight="medium">
       <ServiceHero
         title="Mobile auto glass repair & replacement"
         subtitle="Safelite comes to you for at-home convenience."
@@ -111,31 +111,28 @@ export default function MobileAutoGlassRepairPage() {
           right={
             <ContentBlock>
               <p>
-                {/* The reference page renders this line at weight 500, not bold */}
-                <strong style={{ fontWeight: 500 }}>
-                  Here&apos;s what to expect from our mobile auto glass service:{"​"}
-                </strong>
+                <strong>Here&apos;s what to expect from our mobile auto glass service:{"\u200b"}</strong>
               </p>
               <ul>
                 <li>
                   <p>
                     When you schedule mobile service, we&apos;ll give you a specific time frame for the appointment. Your
                     technician will call you the morning of the appointment to provide an estimated arrival time.
-                    {"​"}
+                    {"\u200b"}
                   </p>
                 </li>
                 <li>
-                  <p>Be prepared to provide coverage for your technician in the event of rain or snow.{"​"}</p>
+                  <p>Be prepared to provide coverage for your technician in the event of rain or snow.{"\u200b"}</p>
                 </li>
                 <li>
                   <p>
                     For one chip in your glass, a repair appointment will take between 30-45 minutes. If you have 2-3
-                    chips in your glass that we&apos;re fixing, the appointment may take up to 90 minutes.{"​"}
+                    chips in your glass that we&apos;re fixing, the appointment may take up to 90 minutes.{"\u200b"}
                   </p>
                 </li>
                 <li>
                   <p>
-                    You&apos;ll receive an email the morning of your appointment with your tech&apos;s info.{"​"}
+                    You&apos;ll receive an email the morning of your appointment with your tech&apos;s info.{"\u200b"}
                   </p>
                 </li>
               </ul>
