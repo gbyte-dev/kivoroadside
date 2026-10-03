@@ -1,0 +1,4 @@
+/* The policy text starts 40px below the header, as on safelite.com */
+div.policy {
+  padding-top: 40px;
+}

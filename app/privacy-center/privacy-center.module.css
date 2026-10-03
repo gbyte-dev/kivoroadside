@@ -1,0 +1,131 @@
+/*
+ * Privacy Center: intro block and the three-per-row policy cards
+ * (.content-thirds with .card-wrapper.card-icon on the reference).
+ */
+
+/* Wide text blocks keep 16px below them */
+.intro,
+.contact {
+  margin-bottom: 16px;
+}
+
+.intro {
+  padding-top: 40px;
+}
+
+.thirds {
+  max-width: 510px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.column {
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  border: 2px solid #dcdcdc;
+  border-radius: 16px;
+  background: #fff;
+  letter-spacing: 0.03em;
+}
+
+.cardImage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 72px;
+  margin: 32px auto -10px;
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+
+.cardImage > span {
+  flex: 0 0 auto;
+}
+
+.cardContent {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 15px;
+  text-align: center;
+}
+
+.cardContent h3 {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  text-align: center;
+}
+
+.cardContent p {
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0 auto auto;
+  padding: 0 0 10px;
+  overflow: hidden;
+}
+
+.btnWrap {
+  text-align: center;
+}
+
+.cardLink {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0;
+  line-height: 1.4;
+}
+
+/* "Cookie preferences" is a button styled like the other links */
+button.cardLink {
+  width: 100%;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: inherit;
+  color: #0070d1;
+  text-decoration: underline rgba(0, 112, 209, 0);
+  transition: all 0.15s ease-out;
+  cursor: pointer;
+}
+
+button.cardLink:hover {
+  text-decoration: underline #0070d1;
+}
+
+@media (max-width: 767px) {
+  .thirds > .column:nth-child(-n + 2) {
+    padding-bottom: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .thirds {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+    max-width: 1020px;
+  }
+
+  .column {
+    width: calc(33.33% - 20px);
+  }
+}

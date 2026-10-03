@@ -1,0 +1,84 @@
+/*
+ * Ratings summary in the gray box at the top of the reviews page. Values
+ * mirror the safelite.com .ratings rules for a ratings block in a gray box.
+ */
+
+.ratings {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.yotpoLink {
+  display: inline-block;
+}
+
+/* 150x30 meter: a yellow bar behind a gray overlay with star cut-outs */
+.ratingStars {
+  position: relative;
+  width: 150px;
+  height: 30px;
+  margin: 20px auto 16px;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+.ratingBar {
+  position: absolute;
+  inset: 0;
+  background: #ffc62b;
+}
+
+.ratingOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("/image/rating-star-overlay.svg");
+  background-size: 30px 30px;
+}
+
+.ratingText {
+  font-size: 21px;
+  opacity: 0;
+}
+
+.ratings h2 {
+  max-width: inherit;
+  padding-bottom: 10px;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 40px;
+  color: #000;
+}
+
+.ratingValue {
+  display: inline;
+  font-weight: 500;
+  color: #000;
+}
+
+.ratingsLinks {
+  position: relative;
+  line-height: 30px;
+}
+
+.reviewCount {
+  position: relative;
+  top: 5px;
+  margin: 0 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #525656;
+  vertical-align: text-bottom;
+}
+
+@media (max-width: 989px) {
+  .ratings {
+    margin: 48px 24px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .ratings {
+    max-width: 750px;
+  }
+}

@@ -160,7 +160,14 @@ function Accordion({ id, title, image, children }: AccordionProps) {
   const toggleId = `accordion-trigger-${id}`;
   return (
     <div className={styles.accordion}>
-      <Image className={styles.accordionImage} {...image} unoptimized />
+      <Image
+        className={styles.accordionImage}
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        unoptimized
+      />
       <div>
         <input id={toggleId} type="checkbox" className={styles.toggle} />
         <h3 className={styles.accordionHeading}>

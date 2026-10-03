@@ -1,0 +1,66 @@
+/*
+ * Three-per-row cards on the auto glass services page (.cards-thirds on the
+ * reference): photo cards under "What we do" and icon cards with a title
+ * under "More benefits". Used together with the shared card classes.
+ */
+
+/* Wrapper of the photo cards */
+.photoCards {
+  display: flex;
+  flex-direction: column;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.photoTitle {
+  margin: 5px 0 10px;
+}
+
+.photoTitle h3 {
+  padding-bottom: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 32px;
+  color: #000;
+}
+
+/* Title above the link in the icon cards */
+.cardTitle {
+  display: block;
+  margin: 5px auto 10px;
+  font-weight: 500;
+  color: #000;
+}
+
+@media (max-width: 767px) {
+  .photoCards .thirdsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .thirdsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+
+  .thirdsContainer .thirdsCard {
+    width: calc(33.3333333333% - 20px);
+    max-width: none;
+    margin: 0 0 30px 30px;
+  }
+
+  .thirdsContainer .thirdsCard:nth-child(3n + 1) {
+    margin-left: 0;
+  }
+
+  .photoCards .photoContent {
+    align-items: flex-start;
+    padding: 30px;
+  }
+}

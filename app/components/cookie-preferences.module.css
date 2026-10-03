@@ -1,0 +1,474 @@
+/*
+ * "Privacy Preferences" popup opened from "Cookie preferences". Mirrors the
+ * OneTrust preference center on safelite.com: a 730x610 dialog with tabs on
+ * the left, full width below 768px and full screen below 641px.
+ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  width: 730px;
+  max-width: 100%;
+  height: 610px;
+  max-height: 100%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px -3px #999;
+  font-family: var(--font-urbanist), Urbanist, Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: normal;
+  color: #525656;
+  text-align: left;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Element reset with no extra weight, so the classes below win */
+:where(.dialog) :where(h2, h3, h4, h5, p, ul) {
+  margin: 0;
+  padding: 0;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  position: relative;
+  flex: 0 0 auto;
+  height: 73px;
+  padding: 10px;
+  border-bottom: 1px solid #d8d8d8;
+  white-space: nowrap;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 40px;
+  vertical-align: middle;
+}
+
+.logo img {
+  width: 160px;
+  height: 40px;
+}
+
+.titleWrap {
+  display: inline-block;
+  width: calc(100% - 200px);
+  padding-left: 10px;
+  vertical-align: middle;
+}
+
+.title {
+  overflow: hidden;
+  font-size: 21.92px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000;
+  text-overflow: ellipsis;
+}
+
+.close {
+  position: absolute;
+  top: 6px;
+  right: 1px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 2px;
+  background: url("/image/cookie-preferences/close.svg") center / 12px auto no-repeat;
+  cursor: pointer;
+}
+
+.close:hover {
+  opacity: 0.7;
+}
+
+/* ---------- Tabs and their text ---------- */
+
+.content {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.tabList {
+  flex: 0 0 auto;
+  width: 30.6666%;
+  overflow-y: auto;
+}
+
+.tabs {
+  list-style: none;
+}
+
+.tab {
+  padding: 12px 5px 12px 12px;
+  border-left: 10px solid transparent;
+  border-bottom: 1px solid #d7d7d7;
+  background-color: #f4f4f4;
+  cursor: pointer;
+}
+
+.tab h3 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* Inactive tabs have a bottom border; the open one does not */
+.activeTab {
+  border-bottom: 0;
+  border-left-color: #da291c;
+  background-color: #fff;
+}
+
+.activeTab h3 {
+  font-weight: 700;
+}
+
+.tab:focus-visible {
+  outline: 2px solid #0070d1;
+  outline-offset: -2px;
+}
+
+.tabPanel {
+  flex: 0 0 auto;
+  width: 65.3333%;
+  margin-left: 3%;
+  overflow-y: auto;
+}
+
+/* The panel shown under the open tab on narrow screens */
+.inlinePanel {
+  display: none;
+}
+
+.description {
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.privacyHeading {
+  width: fit-content;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+}
+
+.text {
+  padding: 0 10px;
+  font-size: 13.008px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.moreLink {
+  margin-right: 8px;
+  font-weight: 400;
+  color: #3860be;
+  text-decoration: underline transparent;
+}
+
+.moreLink:hover {
+  text-decoration-color: #3860be;
+}
+
+.groupHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 10px 0 8px 10px;
+}
+
+.groupHeader h4 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+}
+
+.alwaysActive {
+  padding-right: 7px;
+  font-size: 13.008px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #3860be;
+}
+
+.groupText {
+  padding: 0 10px 10px;
+}
+
+.subgroups {
+  padding: 10px 10px 0;
+  list-style: none;
+}
+
+.subgroup {
+  margin-left: 30px;
+}
+
+.subgroupHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.subgroup h5 {
+  font-size: 13.12px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #000;
+}
+
+.subgroup p {
+  margin-top: 10px;
+  font-size: 13.12px;
+  line-height: 1.4;
+  color: #000;
+}
+
+/* On/off switch: 35x10 track with a 20px knob */
+.switch {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 35px;
+  height: 10px;
+  margin: 5px 7px 0;
+  cursor: pointer;
+}
+
+.switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.track {
+  position: absolute;
+  inset: 0;
+  border-radius: 46px;
+  background-color: #767676;
+  transition: background-color 0.2s ease-in;
+}
+
+.track::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #4d4d4d;
+  transition: 0.4s;
+}
+
+.switch input:checked + .track {
+  background-color: #3c7356;
+}
+
+.switch input:checked + .track::before {
+  background-color: #6f9681;
+  transform: translateX(16px);
+}
+
+.switch input:focus-visible + .track {
+  outline: 2px solid #0070d1;
+  outline-offset: 4px;
+}
+
+/* ---------- Footer buttons ---------- */
+
+.footer {
+  flex: 0 0 auto;
+  border-top: 1px solid #d8d8d8;
+}
+
+.buttons {
+  height: 80px;
+}
+
+.button {
+  float: left;
+  height: 40px;
+  margin: 20px 15px;
+  padding: 0 30px;
+  border: 1px solid #da291c;
+  border-radius: 2px;
+  background-color: #da291c;
+  font-family: inherit;
+  font-size: 13.008px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+/* The wrapper fits the button, which is then held to 90% of it, as on the reference */
+.rejectWrap {
+  float: right;
+  text-align: center;
+}
+
+.rejectWrap .button {
+  float: none;
+  max-width: 90%;
+  margin: 20px 0;
+}
+
+.poweredBy {
+  height: 30px;
+  border-radius: 0 0 2px 2px;
+  background-color: #f4f4f4;
+  text-align: right;
+}
+
+.poweredBy a {
+  display: inline-block;
+  width: 152px;
+  height: 25px;
+  margin: 5px 10px 0 0;
+  vertical-align: top;
+}
+
+.poweredBy img {
+  display: block;
+  width: 136px;
+  height: 16px;
+}
+
+@media (max-width: 767px) {
+  /* As on the reference, the header runs 10px past the right edge */
+  .header {
+    width: calc(100% + 10px);
+    padding: 10px 20px 10px 10px;
+  }
+
+  .logo {
+    width: 15%;
+    margin-top: 5px;
+  }
+
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
+
+  .titleWrap {
+    width: calc(75% + 10px);
+  }
+
+  .title {
+    margin-left: 10px;
+    padding-right: 20px;
+    font-size: 20px;
+    white-space: break-spaces;
+  }
+
+  .close {
+    top: 8.5px;
+    right: 38px;
+  }
+
+  .content {
+    overflow-y: auto;
+  }
+
+  .tabList {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .tabPanel {
+    display: none;
+  }
+
+  .inlinePanel {
+    display: block;
+    width: calc(100% - 15px);
+    margin: 5px 0 5px 10px;
+  }
+
+  .inlinePanel .description {
+    margin-top: 0;
+  }
+
+  .buttons {
+    height: auto;
+    padding-bottom: 0;
+  }
+
+  .button {
+    float: none;
+    width: calc(100% - 33px);
+    margin: 15px 15px 0;
+  }
+
+  .rejectWrap {
+    float: none;
+    padding: 0;
+  }
+
+  .rejectWrap .button {
+    max-width: none;
+    margin: 15px 15px 0;
+  }
+
+  .buttons::after {
+    content: "";
+    display: block;
+    height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .dialog {
+    height: 100%;
+  }
+}
+
+@media (max-width: 425px) {
+  .subgroup {
+    margin-left: 10px;
+  }
+}

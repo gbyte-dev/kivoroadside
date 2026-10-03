@@ -1,398 +1,270 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import SiteHeader from "@/app/components/site-header";
-import SiteFooter from "@/app/components/site-footer";
-import DontWaitCta from "@/app/components/dont-wait-cta";
-import CustomerRatings from "@/app/components/customer-ratings";
+import ServicePageShell from "@/app/components/services/service-page-shell";
+import ServiceHero from "@/app/components/services/service-hero";
+import GrayBox from "@/app/components/services/gray-box";
+import SectionHeading from "@/app/components/services/section-heading";
+import ContentBlock from "@/app/components/services/content-block";
+import ContentHalves, { HalvesHeading } from "@/app/components/services/content-halves";
+import NarrowLeftHalves from "@/app/components/services/narrow-left-halves";
+import HorizontalRule from "@/app/components/services/horizontal-rule";
+import YouTubeVideo from "@/app/components/services/youtube-video";
+import { cx } from "@/app/components/services/class-names";
+import shared from "@/app/components/services/services.module.css";
+import styles from "./auto-glass-services.module.css";
+
+export const metadata: Metadata = {
+  title: "Auto Glass Services | Car Windshield Services | Safelite",
+  description:
+    "Auto glass is designed to protect you on the road. When your windshield or car window glass is damaged, get services you can trust.",
+};
+
+const SERVICES = [
+  {
+    href: "/windshield-repair",
+    title: "Windshield repair",
+    text: "Our windshield repair service quickly fixes minor chips and cracks.",
+    image: "/image/services/navigation/windshield-repair.jpg",
+    alt: "A Safelite technician wearing gloves repairing a windshield",
+  },
+  {
+    href: "/windshield-replacement",
+    title: "Windshield replacement",
+    text: "We use high quality glass at an affordable price for windshield replacement services.",
+    image: "/image/services/navigation/windshield-replacement.jpg",
+    alt: "A Safelite technician wearing gloves replacing a windshield",
+  },
+  {
+    href: "/rear-windshield-replacement",
+    title: "Back glass replacement",
+    text: "We offer quick rear windshield replacement installation to get you back on the road.",
+    image: "/image/services/navigation/back-glass-replacement.jpg",
+    alt: "A Safelite technician wearing gloves replacing a vehicle’s rear window",
+  },
+  {
+    href: "/side-window-replacement",
+    title: "Side window replacement",
+    text: "We can replace your broken car windows quickly and efficiently to keep you safe.",
+    image: "/image/services/navigation/side-window-replacement.jpg",
+    alt: "A Safelite technician wearing gloves replacing a vehicle’s side window",
+  },
+  {
+    href: "/power-window-repair",
+    title: "Power window repair",
+    text: "Our expert technicians can get your power window motor working again.",
+    image: "/image/services/navigation/power-window-repair.jpg",
+    alt: "A Safelite technician wearing gloves replacing a vehicle’s power windows",
+  },
+  {
+    href: "/windshield-camera-recalibration",
+    title: "Safety systems recalibration",
+    text: "We can recalibrate your windshield after a repair or replacement.",
+    image: "/image/services/navigation/safety-systems-recalibration.jpg",
+    alt: "A Safelite technician wearing gloves recalibrating a vehicle’s ADAS system",
+  },
+];
+
+const BENEFITS = [
+  {
+    href: "/auto-glass-services/safelite-reviews",
+    title: "Customer reviews",
+    link: "Read real reviews",
+    image: { src: "/image/services/icons/star-rating.png", width: 69, height: 67, ratio: "97.10145%" },
+  },
+  {
+    href: "/national-lifetime-warranty",
+    title: "Nationwide warranty",
+    link: "Learn more",
+    image: { src: "/image/services/icons/shield.png", width: 55, height: 66, ratio: "120%" },
+  },
+  {
+    href: "/auto-glass-repair-replacement-cost",
+    title: "Cost of Auto Glass Services",
+    link: "Learn more",
+    image: { src: "/image/services/icons/pricetag.png", width: 69, height: 66, ratio: "95.65218%" },
+  },
+];
+
+// "What we do": photo cards, three per row from 768px
+function ServiceCards() {
+  return (
+    <div className={styles.photoCards}>
+      <div className={cx(shared.cardContainer, styles.thirdsContainer)}>
+        {SERVICES.map((service) => (
+          <Link
+            key={service.href}
+            href={service.href}
+            className={cx(shared.cardWrapper, shared.cardClickable, styles.thirdsCard)}
+          >
+            <span className={shared.cardImage}>
+              <span className={shared.enhancedImage}>
+                <span className={shared.imageSpan} style={{ paddingTop: "64.51613%" }} />
+                <Image src={service.image} alt={service.alt} width={310} height={200} />
+              </span>
+            </span>
+            <span className={cx(shared.cardContent, styles.photoContent)}>
+              <span className={styles.photoTitle}>
+                <h3>{service.title}</h3>
+                {service.text}
+              </span>
+              <span className={shared.linkLike}>Learn more</span>
+            </span>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// "More benefits": icon cards with a title, three per row from 768px
+function BenefitCards() {
+  return (
+    <nav className={shared.cardsNavigation}>
+      <div className={cx(shared.cardContainer, styles.thirdsContainer)}>
+        {BENEFITS.map((benefit) => (
+          <Link
+            key={benefit.href}
+            href={benefit.href}
+            className={cx(shared.cardWrapper, shared.cardIcon, shared.cardClickable, styles.thirdsCard)}
+          >
+            <span className={shared.cardImage}>
+              <span className={shared.enhancedImage} style={{ width: benefit.image.width }}>
+                <span className={shared.imageSpan} style={{ paddingTop: benefit.image.ratio }} />
+                <Image src={benefit.image.src} alt="" width={benefit.image.width} height={benefit.image.height} />
+              </span>
+            </span>
+            <span className={shared.cardContent}>
+              <span className={styles.cardTitle}>{benefit.title}</span>
+              <span className={shared.linkLike}>{benefit.link}</span>
+            </span>
+          </Link>
+        ))}
+      </div>
+    </nav>
+  );
+}
+
+// One "Why choose Safelite" row; the reference follows the text with an empty paragraph
+function WhyRow({ heading, children }: { heading: string; children: ReactNode }) {
+  return (
+    <NarrowLeftHalves heading={heading}>
+      <p>{children}</p>
+      <p />
+    </NarrowLeftHalves>
+  );
+}
+
+function Secondary() {
+  return (
+    <>
+      <GrayBox>
+        <SectionHeading>More benefits</SectionHeading>
+        <BenefitCards />
+      </GrayBox>
+      <ContentHalves
+        left={<HalvesHeading>You can reach us when you need us</HalvesHeading>}
+        right={
+          <ContentBlock>
+            <p>
+              Questions? <Link href="/contact-us">Contact us</Link> today. If you’re ready,{" "}
+              <Link href="/schedule-service">schedule service online</Link> now.
+            </p>
+          </ContentBlock>
+        }
+      />
+    </>
+  );
+}
 
 export default function AutoGlassServicesPage() {
-    const heroHeading = "Auto glass repair & replacement services";
-    const heroSubheading = "Require windshield services from the experts?";
-    const heroParagraph =
-        "Have a chip or crack in your auto glass? Poor driving conditions or even bad weather can damage your windshield with projectiles like rocks on the road, debris, or even hail. Whether the damage is on your windshield, rear or side window, services from Safelite AutoGlass can help.";
+  return (
+    <ServicePageShell secondary={<Secondary />}>
+      <ServiceHero
+        title={
+          <>
+            Auto glass repair &amp; replacement services
+            <br />
+          </>
+        }
+        subtitle="Require windshield services from the experts?"
+        image={{
+          alt: "windshield glass services",
+          desktop: { src: "/image/services/auto-glass-services-hero.png", width: 585, height: 380, ratio: "64.95727%" },
+        }}
+      >
+        <p>
+          Have a chip or crack in your auto glass? Poor driving conditions or even bad weather can damage your
+          windshield with projectiles like rocks on the road, debris, or even hail. Whether the damage is on your
+          windshield, rear or side window, services from Safelite AutoGlass can help.
+        </p>
+      </ServiceHero>
 
-    const specialistTitle = "#1 auto glass specialist in the country";
-    const specialistText1 =
-        "Safelite has more than 70 years of experience providing windshield and auto glass service to 6.2 million customers just like you each year.";
-    const specialistText2 =
-        "Not only do we have certified technicians who can get the job done quickly, our auto glass service uses innovative technology and is built for your convenience.";
+      <GrayBox>
+        <ContentHalves
+          paddedLeftColumn
+          left={<HalvesHeading>#1 auto glass specialist in the country</HalvesHeading>}
+          right={
+            <ContentBlock>
+              <p>
+                Safelite has more than 70 years of experience providing windshield and auto glass service to 6.2
+                million customers just like you each year. Not only do we have certified technicians who can get the
+                job done quickly, our auto glass service uses innovative technology and is built for your convenience.
+              </p>
+            </ContentBlock>
+          }
+        />
+      </GrayBox>
 
-    const services = [
-        {
-            title: "Windshield repair",
-            desc: "Our windshield repair service quickly fixes minor chips and cracks.",
-            image: "/image/services/navigation/windshield-repair.jpg",
-            href: "/windshield-repair",
-        },
-        {
-            title: "Windshield replacement",
-            desc: "We use high quality glass at an affordable price for windshield replacement services.",
-            image: "/image/services/navigation/windshield-replacement.jpg",
-            href: "/windshield-replacement",
-        },
-        {
-            title: "Back glass replacement",
-            desc: "We offer quick rear windshield replacement installation to get you back on the road.",
-            image: "/image/services/navigation/back-glass-replacement.jpg",
-            href: "/rear-windshield-replacement",
-        },
-        {
-            title: "Side window replacement",
-            desc: "We can replace your broken car windows quickly and efficiently to keep you safe.",
-            image: "/image/services/navigation/side-window-replacement.jpg",
-            href: "/side-window-replacement",
-        },
-        {
-            title: "Power window repair",
-            desc: "Our expert technicians can get your power window motor working again.",
-            image: "/image/services/navigation/power-window-repair.jpg",
-            href: "/power-window-repair",
-        },
-        {
-            title: "Safety systems recalibration",
-            desc: "We can recalibrate your windshield after a repair or replacement.",
-            image: "/image/services/navigation/safety-systems-recalibration.jpg",
-            href: "/windshield-camera-recalibration",
-        },
-    ];
+      <SectionHeading>What we do</SectionHeading>
+      <ServiceCards />
 
-    const benefits = [
-        {
-            title: "Customer reviews",
-            linkText: "Read real reviews",
-            icon: "/image/benefits/star-rating.png",
-            href: "/why-safelite/customer-reviews",
-        },
-        {
-            title: "Nationwide warranty",
-            linkText: "Learn more",
-            icon: "/image/benefits/shield.png",
-            href: "/why-safelite/nationwide-lifetime-warranty",
-        },
-        {
-            title: "Cost of Auto Glass Services",
-            linkText: "Learn more",
-            icon: "/image/benefits/pricetag.png",
-            href: "/resource-center/auto-glass-service-cost",
-        },
-    ];
+      <GrayBox>
+        <SectionHeading>Our services fix all types of auto glass</SectionHeading>
+        <ContentHalves
+          left={<YouTubeVideo videoId="Fs1_qf5YlsY" title="Our services fix all types of auto glass" />}
+          right={
+            <ContentBlock>
+              <p>
+                Whether your auto glass damage is on your front or{" "}
+                <Link href="/rear-windshield-replacement">rear windshield</Link>, or even a{" "}
+                <Link href="/power-window-repair">side window</Link>, you can rely on Safelite for all types of car
+                glass services.
+              </p>
+              <p>
+                And if we can’t repair your windshield, you can be confident in our ability to{" "}
+                <Link href="/windshield-replacement">replace your windshield</Link>.
+              </p>
+            </ContentBlock>
+          }
+        />
+      </GrayBox>
 
-    return (
-        <>
-            <SiteHeader />
-            <main className="bg-white">
-                {/* 1. Hero Section */}
-                <section className="w-full bg-white border-b border-[#d4d6d8]">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch max-w-[1440px] mx-auto">
-                        <div className="flex flex-col justify-center px-6 sm:px-10 lg:px-12 py-8 lg:py-12 max-w-[520px] lg:ml-auto w-full">
-                            <h1 className="text-3xl lg:text-[40px] font-bold text-black leading-[1.15] mb-3 tracking-[.02em]">
-                                {heroHeading}
-                            </h1>
-                            <p className="text-lg lg:text-[20px] font-normal text-[#525656] leading-snug mb-3 sm:whitespace-nowrap">
-                                {heroSubheading}
-                            </p>
-                            <p className="text-base text-[#525656] leading-[25px] font-normal">
-                                {heroParagraph}
-                            </p>
-                        </div>
-
-                        <div className="hidden lg:block relative w-full min-h-[340px] lg:min-h-[380px]">
-                            <Image
-                                src="/image/services/auto-glass-services-hero.jpg"
-                                alt="Safelite technician assisting customer"
-                                fill
-                                priority
-                                sizes="(min-width: 1024px) 50vw, 100vw"
-                                className="object-cover object-center"
-                            />
-                        </div>
-                    </div>
-                </section>
-
-                {/* 2. #1 Auto Glass Specialist Section */}
-                <section className="w-full bg-[#f4f4f4] py-10 sm:py-12 lg:py-14 px-6 sm:px-10 lg:px-12">
-                    <div className="max-w-[1020px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
-                        <div>
-                            <h2 className="text-2xl sm:text-3xl lg:text-[28px] font-light text-black leading-[1.25] tracking-[.02em]">
-                                {specialistTitle}
-                            </h2>
-                            <div className="w-[110px] h-[5px] bg-[#db0020] mt-4" />
-                        </div>
-
-                        <div>
-                            <p className="text-base text-[#525656] leading-[26px] font-normal">
-                                {specialistText1} {specialistText2}
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 3. What We Do Section */}
-                <section className="w-full bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-[1100px] mx-auto">
-                        <div className="text-center mb-10 sm:mb-12">
-                            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-black tracking-tight mb-2">
-                                What we do
-                            </h2>
-                            <div className="w-16 h-[3px] bg-[#db0020] mx-auto" />
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                            {services.map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className="bg-white rounded-2xl border border-[#d4d6d8] overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300 max-w-[380px] sm:max-w-none mx-auto w-full"
-                                >
-                                    <div className="relative w-full h-[190px] sm:h-[200px]">
-                                        <Image
-                                            src={item.image}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover object-center"
-                                        />
-                                    </div>
-
-                                    <div className="p-6 flex flex-col flex-grow">
-                                        <h3 className="text-lg font-bold text-black mb-3">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-sm sm:text-[15px] text-[#525656] leading-relaxed mb-5 flex-grow">
-                                            {item.desc}
-                                        </p>
-                                        <div>
-                                            <Link
-                                                href={item.href}
-                                                className="text-[#0070d1] font-medium text-sm sm:text-[15px] hover:underline inline-flex items-center"
-                                            >
-                                                Learn more
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* 4. Fix All Types of Auto Glass */}
-                <section className="w-full bg-[#f4f4f4] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-[1020px] mx-auto">
-                        <div className="text-center mb-10">
-                            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-black tracking-tight mb-2">
-                                Our services fix all types of auto glass
-                            </h2>
-                            <div className="w-16 h-[3.5px] bg-[#db0020] mx-auto" />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-                            <div className="w-full aspect-video rounded-xl overflow-hidden shadow-sm bg-black">
-                                <iframe
-                                    className="w-full h-full"
-                                    src="https://www.youtube.com/embed/Fs1_qf5YlsY"
-                                    title="How to Repair or Replace a Cracked Windshield - Safelite AutoGlass"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                />
-                            </div>
-
-                            <div className="flex flex-col gap-4 text-[#525656] text-base sm:text-[17px] leading-[26px] font-normal">
-                                <p>
-                                    Whether your auto glass damage is on your front or{" "}
-                                    <Link
-                                        href="/rear-windshield-replacement"
-                                        className="text-[#0070d1] hover:underline font-medium"
-                                    >
-                                        rear windshield
-                                    </Link>
-                                    , or even a{" "}
-                                    <Link
-                                        href="/side-window-replacement"
-                                        className="text-[#0070d1] hover:underline font-medium"
-                                    >
-                                        side window
-                                    </Link>
-                                    , you can rely on Safelite for all types of car glass services.
-                                </p>
-                                <p>
-                                    And if we can&apos;t repair your windshield, you can be confident
-                                    in our ability to{" "}
-                                    <Link
-                                        href="/windshield-replacement"
-                                        className="text-[#0070d1] hover:underline font-medium"
-                                    >
-                                        replace your windshield
-                                    </Link>
-                                    .
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 5. Why Choose Safelite Section */}
-                <section className="w-full bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-[960px] mx-auto">
-                        <div className="text-center mb-10 sm:mb-12">
-                            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-black tracking-tight mb-2 max-w-[520px] mx-auto leading-snug">
-                                Why Choose Safelite for Auto Glass Repair?
-                            </h2>
-                            <div className="w-16 h-[3.5px] bg-[#db0020] mx-auto" />
-                        </div>
-
-                        <div className="divide-y divide-[#e5e7eb]">
-                            <div className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-                                <div className="md:col-span-5">
-                                    <h3 className="text-lg sm:text-[20px] font-normal text-[#db0020] leading-snug">
-                                        Save money with early windshield repair
-                                    </h3>
-                                </div>
-                                <div className="md:col-span-7 text-sm sm:text-base text-[#525656] leading-[26px]">
-                                    <p>
-                                        The sooner you address a chip or crack in your windshield, the more likely it can be{" "}
-                                        <Link href="/windshield-repair" className="text-[#0070d1] hover:underline font-medium">
-                                            repaired instead of replaced
-                                        </Link>
-                                        , which costs less time and money. Repair is usually possible if the damage is under six inches, roughly dime-sized or smaller, limited to 3 chips, and clear of your cameras or sensors.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-                                <div className="md:col-span-5">
-                                    <h3 className="text-lg sm:text-[20px] font-normal text-[#db0020] leading-snug">
-                                        Windshield repair may be covered by insurance
-                                    </h3>
-                                </div>
-                                <div className="md:col-span-7 text-sm sm:text-base text-[#525656] leading-[26px]">
-                                    <p>
-                                        Depending on your coverage, windshield repair may cost you nothing out of pocket. Safelite works with more than 500 insurance companies nationwide, or you can{" "}
-                                        <Link href="/schedule-service" className="text-[#0070d1] hover:underline font-medium">
-                                            pay directly
-                                        </Link>{" "}
-                                        if you prefer.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-                                <div className="md:col-span-5">
-                                    <h3 className="text-lg sm:text-[20px] font-normal text-[#db0020] leading-snug">
-                                        Mobile windshield repair comes to you
-                                    </h3>
-                                </div>
-                                <div className="md:col-span-7 text-sm sm:text-base text-[#525656] leading-[26px]">
-                                    <p>
-                                        A cracked windshield shouldn&apos;t mean rearranging your day. Our{" "}
-                                        <Link href="/mobile-auto-glass-repair" className="text-[#0070d1] hover:underline font-medium">
-                                            Mobile Glass Shops
-                                        </Link>{" "}
-                                        come to your home, office, or wherever works for you, with the same certified technicians and quality glass you&apos;d get in-shop.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start">
-                                <div className="md:col-span-5">
-                                    <h3 className="text-lg sm:text-[20px] font-normal text-[#db0020] leading-snug">
-                                        Or visit one of 850+ locations near you
-                                    </h3>
-                                </div>
-                                <div className="md:col-span-7 text-sm sm:text-base text-[#525656] leading-[26px]">
-                                    <p>
-                                        Prefer to come to us? Safelite operates more than{" "}
-                                        <Link href="/store-locator" className="text-[#0070d1] hover:underline font-medium">
-                                            850 locations
-                                        </Link>{" "}
-                                        nationwide, so there&apos;s likely a shop near you ready to repair or replace auto glass today.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* 6. More Benefits Section */}
-                <section className="w-full bg-[#f4f4f4] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
-                    <div className="max-w-[1020px] mx-auto">
-                        <div className="text-center mb-10">
-                            <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-light text-black tracking-tight mb-2">
-                                More benefits
-                            </h2>
-                            <div className="w-16 h-[3.5px] bg-[#db0020] mx-auto" />
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                            {benefits.map((item, idx) => (
-                                <div
-                                    key={idx}
-                                    className="bg-white rounded-2xl p-8 border border-[#d4d6d8] flex flex-col items-center text-center shadow-sm hover:shadow-xl transition-shadow duration-300 max-w-[340px] md:max-w-none mx-auto w-full"
-                                >
-                                    <div className="w-16 h-16 relative mb-4 flex items-center justify-center">
-                                        <Image
-                                            src={item.icon}
-                                            alt={item.title}
-                                            width={56}
-                                            height={56}
-                                            className="object-contain"
-                                        />
-                                    </div>
-
-                                    <h3 className="text-base sm:text-lg font-bold text-black mb-3">
-                                        {item.title}
-                                    </h3>
-
-                                    <div className="mt-auto">
-                                        <Link
-                                            href={item.href}
-                                            className="text-[#0070d1] font-medium text-sm sm:text-base hover:underline"
-                                        >
-                                            {item.linkText}
-                                        </Link>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* 7. You Can Reach Us Section (Reference Image matching) */}
-                <section className="w-full bg-white py-10 sm:py-12 lg:py-14 px-6 sm:px-10 lg:px-12 border-t border-[#d4d6d8]">
-                    <div className="max-w-[1020px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
-                        <div>
-                            <h2 className="text-2xl sm:text-3xl lg:text-[28px] font-light text-black leading-[1.25] tracking-[.02em]">
-                                You can reach us when you need us
-                            </h2>
-                            <div className="w-[110px] h-[4px] bg-[#db0020] mt-4" />
-                        </div>
-
-                        <div>
-                            <p className="text-base sm:text-[17px] text-[#525656] leading-[26px] font-normal">
-                                Questions?{" "}
-                                <Link
-                                    href="/contact-us"
-                                    className="text-[#0070d1] hover:underline font-medium"
-                                >
-                                    Contact us
-                                </Link>{" "}
-                                today. If you&apos;re ready,{" "}
-                                <Link
-                                    href="/schedule-service"
-                                    className="text-[#0070d1] hover:underline font-medium"
-                                >
-                                    schedule service online
-                                </Link>{" "}
-                                now.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-
-
-                {/* 9. Don't Wait CTA */}
-                <DontWaitCta />
-            </main>
-            <SiteFooter />
-        </>
-    );
+      <SectionHeading>Why Choose Safelite for Auto Glass Repair?</SectionHeading>
+      <WhyRow heading="Save money with early windshield repair">
+        The sooner you address a chip or crack in your windshield, the more likely it can be{" "}
+        <Link href="/windshield-repair">repaired instead of replaced</Link>, which costs less time and money. Repair is
+        usually possible if the damage is under six inches, roughly dime-sized or smaller, limited to 3 chips, and clear
+        of your cameras or sensors.
+      </WhyRow>
+      <HorizontalRule variant="gray-line" />
+      <WhyRow heading="Windshield repair may be covered by insurance">
+        Depending on your coverage, windshield repair may cost you nothing out of pocket. Safelite works with more than
+        500 insurance companies nationwide, or you can{" "}
+        <Link href="/auto-glass-repair-replacement-cost">pay directly</Link> if you prefer.
+      </WhyRow>
+      <HorizontalRule variant="gray-line" />
+      <WhyRow heading="Mobile windshield repair comes to you">
+        A cracked windshield shouldn’t mean rearranging your day. Our{" "}
+        <Link href="/mobile-auto-glass-repair">Mobile Glass Shops</Link> come to your home, office, or wherever works
+        for you, with the same certified technicians and quality glass you’d get in-shop.
+      </WhyRow>
+      <HorizontalRule variant="gray-line" />
+      <WhyRow heading="Or visit one of 850+ locations near you">
+        Prefer to come to us? Safelite operates more than <Link href="/store-locator">850 locations</Link> nationwide, so
+        there’s likely a shop near you ready to repair or replace auto glass today.
+      </WhyRow>
+    </ServicePageShell>
+  );
 }

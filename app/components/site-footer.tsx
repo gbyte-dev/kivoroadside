@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import CookiePreferences, { openCookiePreferences } from "./cookie-preferences";
 
 const generalLinks = [
   { label: "Locations", href: "/store-locator" },
@@ -244,7 +245,11 @@ export default function SiteFooter() {
                         }`}
                     >
                       {link.cookieButton ? (
-                        <button type="button" className={`${linkClass} cursor-pointer border-0 bg-transparent p-0 tracking-[inherit]`}>
+                        <button
+                          type="button"
+                          onClick={openCookiePreferences}
+                          className={`${linkClass} cursor-pointer border-0 bg-transparent p-0 tracking-[inherit]`}
+                        >
                           {link.label}
                         </button>
                       ) : (
@@ -273,6 +278,7 @@ export default function SiteFooter() {
           </div>
         </div>
       </div>
+      <CookiePreferences />
     </footer>
   );
 }
