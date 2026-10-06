@@ -15,6 +15,8 @@ type NarrowLeftHalvesProps = {
   // On the reference, one row per page gets 1rem padding around its heading
   // column from a site-wide ID rule. Turn this on for that row.
   paddedLeftColumn?: boolean;
+  // Some reference rows have an empty heading after the title (10px taller)
+  emptyHeading?: boolean;
 };
 
 // Red 22px heading in a 37% column, text in a 63% column (stacked on mobile).
@@ -24,6 +26,7 @@ export default function NarrowLeftHalves({
   contentBlock = true,
   headingContentBlock = contentBlock,
   paddedLeftColumn = false,
+  emptyHeading = false,
 }: NarrowLeftHalvesProps) {
   const Wrapper = contentBlock ? ContentBlock : "div";
   const HeadingWrapper = headingContentBlock ? ContentBlock : "div";
@@ -35,6 +38,7 @@ export default function NarrowLeftHalves({
       >
         <HeadingWrapper>
           <h3>{heading}</h3>
+          {emptyHeading && <h3 />}
         </HeadingWrapper>
       </div>
       <div className={cx(styles.contentContainer, styles.contentContainerRight)}>
