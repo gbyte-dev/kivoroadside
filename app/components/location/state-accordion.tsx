@@ -2,13 +2,16 @@
 
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
-import { STATE_LOCATIONS } from "./store-locations";
 
-// States fill the columns top to bottom: 2 columns from 768px, 3 from 992px
-const GRID_ROWS = {
-  "--rows-2": Math.ceil(STATE_LOCATIONS.length / 2),
-  "--rows-3": Math.ceil(STATE_LOCATIONS.length / 3),
-} as CSSProperties;
+// Each store: [page, city, street address]
+export type StoreLink = [href: string, city: string, address: string];
+
+export type StateLocations = {
+  name: string;
+  // "View <state> locations" page, when the list has one
+  href?: string;
+  stores: StoreLink[];
+};
 
 const PANEL_DURATION = 250;
 
@@ -50,10 +53,16 @@ function StatePanel({ id, open, children }: { id: string; open: boolean; childre
   );
 }
 
-// All 50 states; one store list open at a time. Clicking outside the list closes it.
-export default function StateAccordion() {
+// States with their store lists; one list open at a time. Clicking outside
+// the accordion closes it. States fill the columns top to bottom: 2 columns
+// from 768px, 3 from 992px.
+export default function StateAccordion({ states }: { states: StateLocations[] }) {
   const listRef = useRef<HTMLDivElement>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const gridRows = {
+    "--rows-2": Math.ceil(states.length / 2),
+    "--rows-3": Math.ceil(states.length / 3),
+  } as CSSProperties;
 
   useEffect(() => {
     if (openIndex === null) return;
@@ -68,10 +77,10 @@ export default function StateAccordion() {
     <div
       ref={listRef}
       id="sl-accordion-list"
-      style={GRID_ROWS}
+      style={gridRows}
       className="mx-auto mb-8 grid max-w-[510px] grid-cols-1 gap-x-4 rounded-[8px] bg-white px-4 pb-10 md:max-w-[1020px] md:grid-flow-col md:content-start md:max-[992px]:grid-cols-2 md:max-[992px]:grid-rows-[repeat(var(--rows-2),auto)] min-[992px]:grid-cols-3 min-[992px]:grid-rows-[repeat(var(--rows-3),auto)]"
     >
-      {STATE_LOCATIONS.map((state, index) => {
+      {states.map((state, index) => {
         const isOpen = openIndex === index;
         const panelId = `collapse${index + 1}`;
         return (
@@ -113,13 +122,15 @@ export default function StateAccordion() {
                     <span>{address}</span>
                   </Link>
                 ))}
-                <Link
-                  href={state.href}
-                  prefetch={false}
-                  className="group/store mt-4 grid grid-cols-1 items-baseline p-0 text-[#525656]! no-underline!"
-                >
-                  <span className="text-[#0070d1] group-hover/store:underline">View {state.name} locations</span>
-                </Link>
+                {state.href && (
+                  <Link
+                    href={state.href}
+                    prefetch={false}
+                    className="group/store mt-4 grid grid-cols-1 items-baseline p-0 text-[#525656]! no-underline!"
+                  >
+                    <span className="text-[#0070d1] group-hover/store:underline">View {state.name} locations</span>
+                  </Link>
+                )}
               </div>
             </StatePanel>
           </div>

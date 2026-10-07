@@ -17,6 +17,8 @@ type ServicePageShellProps = {
   showDontWaitCta?: boolean;
   // Content between the "Don't wait" band and the footer (e.g. a disclaimer)
   additional?: ReactNode;
+  // A different header for this page (the resource center has its own)
+  header?: ReactNode;
 };
 
 // Shared frame for the service pages: header, article, secondary content,
@@ -27,11 +29,12 @@ export default function ServicePageShell({
   strongWeight = "bold",
   showDontWaitCta = true,
   additional,
+  header,
 }: ServicePageShellProps) {
   const weightClass = strongWeight === "medium" ? styles.strongMedium : undefined;
   return (
     <>
-      <SiteHeader />
+      {header ?? <SiteHeader />}
       <main className={cx(styles.page, weightClass)}>
         <article>{children}</article>
       </main>

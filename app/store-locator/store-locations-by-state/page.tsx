@@ -3,7 +3,8 @@ import Link from "next/link";
 import ServicePageShell from "@/app/components/services/service-page-shell";
 import WideContent from "@/app/components/services/wide-content";
 import LocationSearchForm from "@/app/components/location/location-search-form";
-import StateAccordion from "./state-accordion";
+import StateAccordion from "@/app/components/location/state-accordion";
+import { STATE_LOCATIONS } from "./store-locations";
 
 export const metadata: Metadata = {
   title: "Safelite Shop Near You | Our Auto Glass Locations | Safelite",
@@ -62,7 +63,7 @@ export default function StoreLocationsByStatePage() {
           <p>&nbsp;</p>
         </div>
       </WideContent>
-      <StateAccordion />
+      <StateAccordion states={STATE_LOCATIONS} />
       <SearchAgain />
     </ServicePageShell>
   );

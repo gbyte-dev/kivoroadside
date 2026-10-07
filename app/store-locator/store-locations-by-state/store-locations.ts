@@ -1,13 +1,5 @@
 // Safelite stores by state, in the order shown on the reference page.
-// Each store: [page, city, street address]
-export type StoreLink = [href: string, city: string, address: string];
-
-export type StateLocations = {
-  name: string;
-  // "View <state> locations" page
-  href: string;
-  stores: StoreLink[];
-};
+import type { StateLocations } from "@/app/components/location/state-accordion";
 
 export const STATE_LOCATIONS: StateLocations[] = [
   {

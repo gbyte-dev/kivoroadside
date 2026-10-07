@@ -88,6 +88,40 @@ export const WHY_SAFELITE_LINKS = {
   },
 } satisfies Record<string, NavCardData>;
 
+// Cards linking the "About Safelite" pages
+export const ABOUT_SAFELITE_LINKS = {
+  about: {
+    href: "/about-safelite",
+    label: "About Us",
+    image: { src: "/image/services/icons/about-us.png", alt: "", width: 104, height: 48, ratio: "46.15385%" },
+  },
+  foundation: {
+    href: "/about-safelite/safelite-autoglass-foundation",
+    label: "Safelite Foundation",
+    image: { src: "/image/services/icons/giving-back.png", alt: "", width: 67, height: 52, ratio: "77.61194%" },
+  },
+  pressReleases: {
+    href: "/about-safelite/press-releases",
+    label: "Press releases",
+    image: { src: "/image/services/icons/press-releases.png", alt: "", width: 47, height: 56, ratio: "119.1489%" },
+  },
+  leaders: {
+    href: "/about-safelite/our-leaders",
+    label: "Our Leaders",
+    image: { src: "/image/services/icons/our-leaders.png", alt: "", width: 65, height: 40, ratio: "61.53846%" },
+  },
+  partnerships: {
+    href: "/about-safelite/safelite-partnerships",
+    label: "Our Partnerships",
+    image: { src: "/image/services/icons/partnerships.png", alt: "", width: 65, height: 42, ratio: "64.61539%" },
+  },
+  companies: {
+    href: "/about-safelite/safelite-autoglass-companies",
+    label: "Safelite Group Companies",
+    image: { src: "/image/services/icons/companies.png", alt: "", width: 59, height: 48, ratio: "81.35593%" },
+  },
+} satisfies Record<string, NavCardData>;
+
 // The set shown on the mobile service page
 export const WHY_SAFELITE_CARDS: NavCardData[] = [
   WHY_SAFELITE_LINKS.reviews,
