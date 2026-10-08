@@ -13,6 +13,7 @@ import YouTubeVideo from "@/app/components/services/youtube-video";
 import NavCards from "@/app/components/services/nav-cards";
 import { cx } from "@/app/components/services/class-names";
 import type { NavCardData } from "@/app/components/services/service-links";
+import FoundationSubheader from "@/app/components/foundation-subheader";
 import styles from "./foundation.module.css";
 
 export const metadata: Metadata = {
@@ -200,38 +201,6 @@ function WideHeading({ children }: { children: ReactNode }) {
   );
 }
 
-function SubHeader() {
-  return (
-    <div className={styles.subheader}>
-      <div className={styles.subheaderInner}>
-        <Image
-          className={styles.subheaderIcon}
-          src={`${IMAGES}/foster-love-icon.svg`}
-          alt="foster-love-icon"
-          width={21}
-          height={24}
-          unoptimized
-        />
-        <Link className={styles.subheaderLink} href="/about-safelite/safelite-autoglass-foundation">
-          Our impact
-        </Link>
-        <Link
-          className={styles.subheaderLink}
-          href="/about-safelite/safelite-autoglass-foundation/safelite-and-foster-love"
-        >
-          Safelite + Foster Love
-        </Link>
-        <ServiceButton
-          href="/about-safelite/safelite-autoglass-foundation/safelite-and-foster-love#join-us-in-fostering-change"
-          style={{ marginLeft: "auto" }}
-        >
-          Join us in fostering change
-        </ServiceButton>
-      </div>
-    </div>
-  );
-}
-
 function Hero() {
   const quote = { textAlign: "left", fontSize: "1rem", lineHeight: "25px" } as const;
   return (
@@ -411,7 +380,7 @@ function Secondary() {
 export default function SafeliteFoundationPage() {
   return (
     <ServicePageShell secondary={<Secondary />} strongWeight="medium">
-      <SubHeader />
+      <FoundationSubheader active="impact" />
       <Hero />
 
       <GrayBox>

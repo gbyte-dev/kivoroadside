@@ -1,76 +1,8 @@
 /*
  * Blocks used only on the Safelite Foundation page. Values mirror the
- * safelite.com rules for .fl-subheader-wrapper, .hero-5050,
- * .fl-accordion-content-wrapper and .partners-wrapper.
+ * safelite.com rules for .hero-5050, .fl-accordion-content-wrapper and
+ * .partners-wrapper. The sub-header is the shared FoundationSubheader.
  */
-
-/* ---------- Sub-header (icon, two links, button) ---------- */
-
-.subheader {
-  display: flex;
-  width: 100%;
-  height: 152px;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-  color: #0a0a0a;
-}
-
-.subheaderInner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 24px;
-  width: 100%;
-  max-width: 1024px;
-  margin: 0 auto;
-  padding: 24px 16px;
-}
-
-.subheaderIcon {
-  width: 21px;
-  height: auto;
-}
-
-.subheaderLink {
-  position: relative;
-  color: #0a0a0a;
-  text-decoration: none;
-}
-
-.subheaderLink::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-
-.subheaderLink:hover,
-.subheaderLink:focus-visible {
-  color: #0070d1;
-  text-decoration: none;
-}
-
-.subheaderLink:hover::after,
-.subheaderLink:focus-visible::after {
-  transform: scaleX(1);
-}
-
-@media (min-width: 992px) {
-  .subheader {
-    height: 72px;
-  }
-
-  .subheaderInner {
-    flex-wrap: nowrap;
-  }
-}
 
 /* ---------- 50/50 hero ---------- */
 

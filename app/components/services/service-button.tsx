@@ -11,13 +11,21 @@ type ServiceButtonProps = {
   style?: CSSProperties;
   // Open in a new tab (for outside sites)
   newTab?: boolean;
+  className?: string;
 };
 
 // The blue 56px button with 16px corners used across the service pages.
-export default function ServiceButton({ href, children, center = false, style, newTab = false }: ServiceButtonProps) {
+export default function ServiceButton({
+  href,
+  children,
+  center = false,
+  style,
+  newTab = false,
+  className,
+}: ServiceButtonProps) {
   return (
     <Link
-      className={cx(styles.btn, center && styles.btnCenter)}
+      className={cx(styles.btn, center && styles.btnCenter, className)}
       href={href}
       style={style}
       target={newTab ? "_blank" : undefined}
