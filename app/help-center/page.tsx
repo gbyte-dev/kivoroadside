@@ -7,6 +7,7 @@ import ContentHalves, { HalvesHeading } from "@/app/components/services/content-
 import HorizontalRule from "@/app/components/services/horizontal-rule";
 import AiChatButton from "@/app/components/services/ai-chat-button";
 import IconTitleCards, { type IconTitleCard } from "@/app/components/services/icon-title-cards";
+import { HELP_CENTER_FAQ_LINKS } from "@/app/components/services/service-links";
 import ChatHero from "./chat-hero";
 
 export const metadata: Metadata = {
@@ -15,38 +16,11 @@ export const metadata: Metadata = {
     "Safelite’s customer service team makes sure you get the auto glass service you need. For questions about windshield damage, visit our online help center.",
 };
 
-const FAQ_TOPICS: IconTitleCard[] = [
-  {
-    href: "/help-center/glass-damage-and-service",
-    title: "Glass damage and service",
-    image: { src: "/image/help-center/autoglass.png", width: 79, height: 48, ratio: "60.75949%", alt: "" },
-  },
-  {
-    href: "/help-center/preparing-for-your-appointment",
-    title: "Preparing for your appointment",
-    image: { src: "/image/help-center/wrench.png", width: 65, height: 66, ratio: "101.5385%", alt: "" },
-  },
-  {
-    href: "/help-center/cost",
-    title: "Cost, payment, and billing",
-    image: { src: "/image/help-center/pricetag.png", width: 61, height: 62, ratio: "101.6393%", alt: "" },
-  },
-  {
-    href: "/help-center/insurance-coverage",
-    title: "Insurance coverage and claims",
-    image: { src: "/image/help-center/checklist.png", width: 51, height: 66, ratio: "129.4118%", alt: "" },
-  },
-  {
-    href: "/help-center/warranty",
-    title: "Warranty details",
-    image: { src: "/image/help-center/shield.png", width: 55, height: 66, ratio: "120%", alt: "" },
-  },
-  {
-    href: "/help-center/marketing-and-privacy",
-    title: "Marketing and privacy",
-    image: { src: "/image/help-center/lock.png", width: 49, height: 58, ratio: "118.3673%", alt: "" },
-  },
-];
+// The FAQ topic cards, from the shared help center links
+const FAQ_TOPICS: IconTitleCard[] = Object.values(HELP_CENTER_FAQ_LINKS).map(({ label, ...card }) => ({
+  ...card,
+  title: label,
+}));
 
 export default function HelpCenterPage() {
   return (

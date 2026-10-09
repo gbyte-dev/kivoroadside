@@ -5,16 +5,13 @@ import Link from "next/link";
 import ServicePageShell from "@/app/components/services/service-page-shell";
 import GrayBox from "@/app/components/services/gray-box";
 import WideContent from "@/app/components/services/wide-content";
-import ContentBlock from "@/app/components/services/content-block";
 import ContentHalves from "@/app/components/services/content-halves";
-import HorizontalRule from "@/app/components/services/horizontal-rule";
 import ServiceButton from "@/app/components/services/service-button";
 import YouTubeVideo from "@/app/components/services/youtube-video";
-import NavCards from "@/app/components/services/nav-cards";
 import { cx } from "@/app/components/services/class-names";
-import type { NavCardData } from "@/app/components/services/service-links";
 import FoundationSubheader from "@/app/components/foundation-subheader";
 import styles from "./foundation.module.css";
+import AboutLearnMore from "@/app/components/services/about-learn-more";
 
 export const metadata: Metadata = {
   title: "Safelite AutoGlass Foundation | Safelite",
@@ -23,35 +20,6 @@ export const metadata: Metadata = {
 };
 
 const IMAGES = "/image/services/foundation";
-
-// "About Safelite" icon cards under "Learn more"
-const LEARN_MORE_CARDS: NavCardData[] = [
-  {
-    href: "/about-safelite",
-    label: "About Us",
-    image: { src: "/image/services/icons/about-us.png", alt: "", width: 104, height: 48, ratio: "46.15385%" },
-  },
-  {
-    href: "/about-safelite/press-releases",
-    label: "Press releases",
-    image: { src: "/image/services/icons/press-releases.png", alt: "", width: 47, height: 56, ratio: "119.1489%" },
-  },
-  {
-    href: "/about-safelite/our-leaders",
-    label: "Our Leaders",
-    image: { src: "/image/services/icons/our-leaders.png", alt: "", width: 65, height: 40, ratio: "61.53846%" },
-  },
-  {
-    href: "/about-safelite/safelite-partnerships",
-    label: "Our Partnerships",
-    image: { src: "/image/services/icons/partnerships.png", alt: "", width: 65, height: 42, ratio: "64.61539%" },
-  },
-  {
-    href: "/about-safelite/safelite-autoglass-companies",
-    label: "Safelite Group Companies",
-    image: { src: "/image/services/icons/companies.png", alt: "", width: 59, height: 48, ratio: "81.35593%" },
-  },
-];
 
 // Partner logo sizes (from each SVG's viewBox). The CSS sets the height and
 // the width follows the logo's own proportions.
@@ -365,21 +333,9 @@ function Partners() {
   );
 }
 
-function Secondary() {
-  return (
-    <>
-      <ContentBlock>
-        <h2 style={{ marginTop: 30 }}>Learn more</h2>
-      </ContentBlock>
-      <HorizontalRule variant="center-red" />
-      <NavCards variant="icon" columns={5} cards={LEARN_MORE_CARDS} />
-    </>
-  );
-}
-
 export default function SafeliteFoundationPage() {
   return (
-    <ServicePageShell secondary={<Secondary />} strongWeight="medium">
+    <ServicePageShell secondary={<AboutLearnMore current="foundation" titleClassName="mt-[30px]!" />} strongWeight="medium">
       <FoundationSubheader active="impact" />
       <Hero />
 

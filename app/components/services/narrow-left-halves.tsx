@@ -17,6 +17,8 @@ type NarrowLeftHalvesProps = {
   paddedLeftColumn?: boolean;
   // Some reference rows have an empty heading after the title (10px taller)
   emptyHeading?: boolean;
+  // Content under the heading in the left column (e.g. a short bold summary)
+  belowHeading?: ReactNode;
 };
 
 // Red 22px heading in a 37% column, text in a 63% column (stacked on mobile).
@@ -27,6 +29,7 @@ export default function NarrowLeftHalves({
   headingContentBlock = contentBlock,
   paddedLeftColumn = false,
   emptyHeading = false,
+  belowHeading,
 }: NarrowLeftHalvesProps) {
   const Wrapper = contentBlock ? ContentBlock : "div";
   const HeadingWrapper = headingContentBlock ? ContentBlock : "div";
@@ -39,6 +42,7 @@ export default function NarrowLeftHalves({
         <HeadingWrapper>
           <h3>{heading}</h3>
           {emptyHeading && <h3 />}
+          {belowHeading}
         </HeadingWrapper>
       </div>
       <div className={cx(styles.contentContainer, styles.contentContainerRight)}>

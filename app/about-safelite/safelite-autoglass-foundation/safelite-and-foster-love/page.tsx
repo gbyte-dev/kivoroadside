@@ -6,10 +6,9 @@ import ServicePageShell from "@/app/components/services/service-page-shell";
 import GrayBox from "@/app/components/services/gray-box";
 import WideContent from "@/app/components/services/wide-content";
 import ContentHalves from "@/app/components/services/content-halves";
-import SectionHeading from "@/app/components/services/section-heading";
-import NavCards from "@/app/components/services/nav-cards";
 import YouTubeVideo from "@/app/components/services/youtube-video";
-import { ABOUT_SAFELITE_LINKS } from "@/app/components/services/service-links";
+import AboutLearnMore from "@/app/components/services/about-learn-more";
+import Hero5050 from "@/app/components/services/hero-5050";
 import FoundationSubheader from "@/app/components/foundation-subheader";
 import DonationCards from "./donation-cards";
 
@@ -104,32 +103,23 @@ function Scholar({ image, name, school, goal }: { image: string; name: string; s
 // from 992px; below that the photo spans the full width under the copy.
 function Hero() {
   return (
-    <section className="mx-auto grid max-w-[1020px] grid-rows-[auto] px-4 min-[992px]:grid-cols-2">
-      <div className="flex flex-col py-4 min-[992px]:pb-4 min-[992px]:pl-0 min-[992px]:pr-10 min-[992px]:pt-8">
-        <h2 className="mx-0! mb-4! mt-4! max-w-fit! p-0! text-left! text-[32px]! font-bold! leading-[44px]! text-black min-[992px]:mt-8!">
-          About Foster Love
-        </h2>
-        {/* The reference nests these in a broken paragraph, which leaves an
-            empty 16px paragraph before the first one and after the last one */}
-        <p className="mb-4 mt-4 p-0! text-xl leading-[32px]">
-          Foster Love is a non-profit organization based in Brea, California, dedicated to improving the lives of
-          children in foster care across the country.
-        </p>
-        <p className="mb-8 p-0! text-xl leading-[32px]">
-          Founded in 2008, Foster Love has supported over 1 million kids in foster care.
-        </p>
-      </div>
-      <div className="relative mx-[-16px] flex w-[calc(100%+32px)] items-center justify-center pt-[56.25%] min-[992px]:m-0 min-[992px]:w-full">
-        <Image
-          src={`${IMAGES}/hero.jpg`}
-          alt="Safelite associates standing in front of the assembled bicycles they built for children in foster care, smiling and posing together after completing the build."
-          fill
-          sizes="(min-width: 992px) 494px, 100vw"
-          preload
-          className="object-cover object-center"
-        />
-      </div>
-    </section>
+    <Hero5050
+      title="About Foster Love"
+      image={{
+        src: `${IMAGES}/hero.jpg`,
+        alt: "Safelite associates standing in front of the assembled bicycles they built for children in foster care, smiling and posing together after completing the build.",
+      }}
+    >
+      {/* The reference nests these in a broken paragraph, which leaves an
+          empty 16px paragraph before the first one and after the last one */}
+      <p className="mb-4 mt-4 p-0! text-xl leading-[32px]">
+        Foster Love is a non-profit organization based in Brea, California, dedicated to improving the lives of
+        children in foster care across the country.
+      </p>
+      <p className="mb-8 p-0! text-xl leading-[32px]">
+        Founded in 2008, Foster Love has supported over 1 million kids in foster care.
+      </p>
+    </Hero5050>
   );
 }
 
@@ -202,25 +192,6 @@ function FoundationNote() {
   );
 }
 
-function LearnMore() {
-  return (
-    <>
-      <SectionHeading>Learn more</SectionHeading>
-      <NavCards
-        variant="icon"
-        columns={5}
-        cards={[
-          ABOUT_SAFELITE_LINKS.about,
-          ABOUT_SAFELITE_LINKS.pressReleases,
-          ABOUT_SAFELITE_LINKS.leaders,
-          ABOUT_SAFELITE_LINKS.partnerships,
-          ABOUT_SAFELITE_LINKS.companies,
-        ]}
-      />
-    </>
-  );
-}
-
 // Refund note the "non-refundable" link points to
 function Disclaimer() {
   return (
@@ -252,7 +223,7 @@ function Disclaimer() {
 
 export default function SafeliteAndFosterLovePage() {
   return (
-    <ServicePageShell secondary={<LearnMore />} additional={<Disclaimer />} strongWeight="medium">
+    <ServicePageShell secondary={<AboutLearnMore current="foundation" />} additional={<Disclaimer />} strongWeight="medium">
       <FoundationSubheader active="foster-love" />
       <Hero />
 

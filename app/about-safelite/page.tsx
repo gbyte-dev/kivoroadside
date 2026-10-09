@@ -11,8 +11,7 @@ import ContentImage from "@/app/components/services/content-image";
 import NarrowLeftHalves from "@/app/components/services/narrow-left-halves";
 import HorizontalRule from "@/app/components/services/horizontal-rule";
 import WideContent from "@/app/components/services/wide-content";
-import NavCards from "@/app/components/services/nav-cards";
-import { ABOUT_SAFELITE_LINKS } from "@/app/components/services/service-links";
+import AboutLearnMore from "@/app/components/services/about-learn-more";
 
 export const metadata: Metadata = {
   title: "About Safelite | Safelite Reviews | Safelite",
@@ -91,28 +90,9 @@ function RatingsSummary() {
   );
 }
 
-function LearnMore() {
-  return (
-    <>
-      <SectionHeading>Learn more</SectionHeading>
-      <NavCards
-        variant="icon"
-        columns={5}
-        cards={[
-          ABOUT_SAFELITE_LINKS.foundation,
-          ABOUT_SAFELITE_LINKS.pressReleases,
-          ABOUT_SAFELITE_LINKS.leaders,
-          ABOUT_SAFELITE_LINKS.partnerships,
-          ABOUT_SAFELITE_LINKS.companies,
-        ]}
-      />
-    </>
-  );
-}
-
 export default function AboutSafelitePage() {
   return (
-    <ServicePageShell secondary={<LearnMore />}>
+    <ServicePageShell secondary={<AboutLearnMore current="about" />}>
       <ServiceHero
         title="About Safelite"
         subtitle="With more than 70 years of service, Safelite knows auto glass."

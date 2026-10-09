@@ -5,8 +5,7 @@ import ServicePageShell from "@/app/components/services/service-page-shell";
 import ContentBlock from "@/app/components/services/content-block";
 import HorizontalRule from "@/app/components/services/horizontal-rule";
 import WideContent from "@/app/components/services/wide-content";
-import NavCards from "@/app/components/services/nav-cards";
-import { ABOUT_SAFELITE_LINKS } from "@/app/components/services/service-links";
+import AboutLearnMore from "@/app/components/services/about-learn-more";
 
 export const metadata: Metadata = {
   title: "Safelite AutoGlass Leaders | Safelite",
@@ -179,32 +178,9 @@ function LeaderRow({ leader, last }: { leader: Leader; last: boolean }) {
   );
 }
 
-function LearnMore() {
-  return (
-    <>
-      {/* This page adds 10px above the first secondary title */}
-      <ContentBlock>
-        <h2 className="pt-[10px]!">Learn more</h2>
-      </ContentBlock>
-      <HorizontalRule variant="center-red" />
-      <NavCards
-        variant="icon"
-        columns={5}
-        cards={[
-          { ...ABOUT_SAFELITE_LINKS.about, label: "About Us" },
-          ABOUT_SAFELITE_LINKS.foundation,
-          ABOUT_SAFELITE_LINKS.pressReleases,
-          ABOUT_SAFELITE_LINKS.partnerships,
-          ABOUT_SAFELITE_LINKS.companies,
-        ]}
-      />
-    </>
-  );
-}
-
 export default function OurLeadersPage() {
   return (
-    <ServicePageShell secondary={<LearnMore />} strongWeight="medium">
+    <ServicePageShell secondary={<AboutLearnMore current="leaders" titleClassName="pt-[10px]!" />} strongWeight="medium">
       {/* .content-wide: 20px above the title up to 768px, 40px from 769px */}
       <div className="pt-5 min-[769px]:pt-10">
         <WideContent>

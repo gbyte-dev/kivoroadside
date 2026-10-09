@@ -2,15 +2,13 @@ import Link from "next/link";
 import ServicePageShell from "@/app/components/services/service-page-shell";
 import ServiceHero from "@/app/components/services/service-hero";
 import GrayBox from "@/app/components/services/gray-box";
-import SectionHeading from "@/app/components/services/section-heading";
 import ContentHalves from "@/app/components/services/content-halves";
 import HorizontalRule from "@/app/components/services/horizontal-rule";
-import NavCards from "@/app/components/services/nav-cards";
-import { ABOUT_SAFELITE_LINKS } from "@/app/components/services/service-links";
 import ListPagination from "@/app/components/services/list-pagination";
 import { cx } from "@/app/components/services/class-names";
 import shared from "@/app/components/services/services.module.css";
 import { PRESS_PAGE_SIZE, PRESS_RELEASES } from "./press-releases";
+import AboutLearnMore from "@/app/components/services/about-learn-more";
 
 export const PRESS_PAGE_COUNT = Math.ceil(PRESS_RELEASES.length / PRESS_PAGE_SIZE);
 
@@ -51,31 +49,12 @@ function PressReleaseList({ page }: { page: number }) {
   );
 }
 
-function LearnMore() {
-  return (
-    <>
-      <SectionHeading>Learn more</SectionHeading>
-      <NavCards
-        variant="icon"
-        columns={5}
-        cards={[
-          ABOUT_SAFELITE_LINKS.about,
-          ABOUT_SAFELITE_LINKS.foundation,
-          ABOUT_SAFELITE_LINKS.leaders,
-          ABOUT_SAFELITE_LINKS.partnerships,
-          ABOUT_SAFELITE_LINKS.companies,
-        ]}
-      />
-    </>
-  );
-}
-
 // The press release list, shared by /about-safelite/press-releases and its
 // numbered pages. Like the reference, the numbered pages (/1, /2, ...) leave out
 // the "Learn more" cards and the "Don't wait" band.
 export default function PressReleasesPage({ page, numbered = false }: { page: number; numbered?: boolean }) {
   return (
-    <ServicePageShell secondary={numbered ? null : <LearnMore />} showDontWaitCta={!numbered}>
+    <ServicePageShell secondary={numbered ? null : <AboutLearnMore current="pressReleases" />} showDontWaitCta={!numbered}>
       <ServiceHero
         title="Press releases"
         image={{

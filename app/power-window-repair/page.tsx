@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import Link from "next/link";
 import ServicePageShell from "@/app/components/services/service-page-shell";
+import FaqAccordion from "@/app/components/services/faq-accordion";
 import ServiceHero from "@/app/components/services/service-hero";
 import GrayBox from "@/app/components/services/gray-box";
 import SectionHeading from "@/app/components/services/section-heading";
@@ -56,21 +56,6 @@ const faqs = [
       "The total cost to repair or replace a power window can vary and depends on the type of repair needed, parts used, and more. Getting a power window repair quote is always recommended for cost accuracy.",
   },
 ];
-
-// One FAQ: tap to open on mobile, always open from 768px
-function FaqItem({ id, question, children }: { id: string; question: string; children: ReactNode }) {
-  return (
-    <div className={styles.accordion}>
-      <input id={id} type="checkbox" className={styles.toggle} />
-      <label htmlFor={id} className={styles.question}>
-        {question}
-      </label>
-      <div className={styles.answer}>
-        <div>{children}</div>
-      </div>
-    </div>
-  );
-}
 
 export default function PowerWindowRepairPage() {
   return (
@@ -208,9 +193,9 @@ export default function PowerWindowRepairPage() {
 
       <SectionHeading>Power window repair FAQs</SectionHeading>
       {faqs.map((faq, index) => (
-        <FaqItem key={faq.question} id={`power-window-faq-${index + 1}`} question={faq.question}>
+        <FaqAccordion key={faq.question} id={`power-window-faq-${index + 1}`} question={faq.question}>
           <p>{faq.answer}</p>
-        </FaqItem>
+        </FaqAccordion>
       ))}
       <HorizontalRule variant="section-divider" />
     </ServicePageShell>

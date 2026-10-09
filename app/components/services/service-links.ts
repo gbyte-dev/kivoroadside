@@ -129,3 +129,37 @@ export const WHY_SAFELITE_CARDS: NavCardData[] = [
   WHY_SAFELITE_LINKS.advantage,
   WHY_SAFELITE_LINKS.recycling,
 ];
+
+// Help center FAQ topics (the help center cards and "Additional FAQs")
+export const HELP_CENTER_FAQ_LINKS = {
+  damage: {
+    href: "/help-center/glass-damage-and-service",
+    label: "Glass damage and service",
+    image: { src: "/image/help-center/autoglass.png", alt: "", width: 79, height: 48, ratio: "60.75949%" },
+  },
+  appointment: {
+    href: "/help-center/preparing-for-your-appointment",
+    label: "Preparing for your appointment",
+    image: { src: "/image/help-center/wrench.png", alt: "", width: 65, height: 66, ratio: "101.5385%" },
+  },
+  cost: {
+    href: "/help-center/cost",
+    label: "Cost, payment, and billing",
+    image: { src: "/image/help-center/pricetag.png", alt: "", width: 61, height: 62, ratio: "101.6393%" },
+  },
+  insurance: {
+    href: "/help-center/insurance-coverage",
+    label: "Insurance coverage and claims",
+    image: { src: "/image/help-center/checklist.png", alt: "", width: 51, height: 66, ratio: "129.4118%" },
+  },
+  warranty: {
+    href: "/help-center/warranty",
+    label: "Warranty details",
+    image: { src: "/image/help-center/shield.png", alt: "", width: 55, height: 66, ratio: "120%" },
+  },
+  privacy: {
+    href: "/help-center/marketing-and-privacy",
+    label: "Marketing and privacy",
+    image: { src: "/image/help-center/lock.png", alt: "", width: 49, height: 58, ratio: "118.3673%" },
+  },
+} satisfies Record<string, NavCardData>;
