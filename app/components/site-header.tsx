@@ -170,7 +170,7 @@ export default function SiteHeader() {
 
             {/* CTA */}
             <div className="flex h-full items-center">
-              <Link href="/schedule-service?start_type=fmg" className={ctaClass}>
+              <Link href="/fmg/vehicle" className={ctaClass}>
                 Get quote + schedule
               </Link>
             </div>
@@ -246,7 +246,7 @@ export default function SiteHeader() {
         {[
           { label: "Locations", href: "/store-locator" },
           { label: "My appt", href: "/my-appointment" },
-          { label: "Quote", href: "/schedule-service?start_type=fmg" },
+          { label: "Quote", href: "/fmg/vehicle" },
         ].map((item, index) => (
           <Link
             key={item.label}
@@ -389,7 +389,7 @@ export default function SiteHeader() {
           ))}
 
           <Link
-            href="/schedule-service?start_type=fmg"
+            href="/fmg/vehicle"
             className={`${ctaClass} mx-auto my-4 flex w-[95%]`}
           >
             Get quote + schedule

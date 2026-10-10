@@ -65,7 +65,7 @@ const slides: Slide[] = [
         </a>
       </>
     ),
-    cta: { label: "Let's get started", href: "/schedule-service?startType=fmg" },
+    cta: { label: "Let's get started", href: "/fmg/vehicle" },
   },
   {
     category: "promotions",
@@ -83,7 +83,7 @@ const slides: Slide[] = [
         </a>
       </>
     ),
-    cta: { label: "Book now", href: "/schedule-service?startType=fmg" },
+    cta: { label: "Book now", href: "/fmg/vehicle" },
   },
   {
     category: "promotions",
@@ -101,7 +101,7 @@ const slides: Slide[] = [
         </a>
       </>
     ),
-    cta: { label: "Book now", href: "/schedule-service?startType=fmg" },
+    cta: { label: "Book now", href: "/fmg/vehicle" },
   },
 ];
 

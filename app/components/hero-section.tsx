@@ -125,7 +125,7 @@ export default function HeroSection() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const zip = zipcode.trim();
-    router.push(zip ? `/schedule-service?zipcode=${encodeURIComponent(zip)}` : "/schedule-service");
+    router.push(zip ? `/fmg/vehicle?zipcode=${encodeURIComponent(zip)}` : "/fmg/vehicle");
   }
 
   return (

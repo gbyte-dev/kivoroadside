@@ -107,7 +107,19 @@ function Card({ card }: { card: PolicyCard }) {
         </span>
       </div>
       <div className={styles.cardContent}>
-        <h3>{card.title}</h3>
+        <h3>
+          {card.href === "cookies" ? (
+            card.title
+          ) : card.href.startsWith("http") ? (
+            <a href={card.href} className="hover:text-[#db0020] transition-colors">
+              {card.title}
+            </a>
+          ) : (
+            <Link href={card.href} className="hover:text-[#db0020] transition-colors">
+              {card.title}
+            </Link>
+          )}
+        </h3>
         <p>{card.text}</p>
         <div className={styles.btnWrap}>
           <CardLink card={card} />

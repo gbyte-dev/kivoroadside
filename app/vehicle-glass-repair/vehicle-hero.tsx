@@ -29,7 +29,7 @@ export default function VehicleHero() {
         <p className="mb-8 p-0! text-left text-base leading-[25px]">
           We service a wide range of vehicle makes and hundreds of models, from everyday commuter cars to trucks, SUVs,
           and luxury vehicles. Simply find your make below to explore your vehicle-specific glass repair and replacement
-          options. <Link href="/schedule-service">Get a quote and schedule an appointment online</Link> in minutes.
+          options. <Link href="/fmg/vehicle">Get a quote and schedule an appointment online</Link> in minutes.
         </p>
       </div>
 

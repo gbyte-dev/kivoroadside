@@ -10,7 +10,7 @@ type ServicePageShellProps = {
   // Main article content
   children: ReactNode;
   // Content after the article (additional services, FAQs, cards)
-  secondary: ReactNode;
+  secondary?: ReactNode;
   // Bold text weight. Most reference pages use 700; some keep it at 500.
   strongWeight?: "bold" | "medium";
   // Some reference pages hide the "Don't wait" band
@@ -38,7 +38,7 @@ export default function ServicePageShell({
       <main className={cx(styles.page, weightClass)}>
         <article>{children}</article>
       </main>
-      <div className={cx(styles.page, weightClass, styles.siteSecondary)}>{secondary}</div>
+      {secondary ? <div className={cx(styles.page, weightClass, styles.siteSecondary)}>{secondary}</div> : null}
       {showDontWaitCta && <DontWaitCta />}
       {additional && <div className={cx(styles.page, weightClass)}>{additional}</div>}
       <SiteFooter />
