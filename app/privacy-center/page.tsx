@@ -19,6 +19,7 @@ type PolicyCard = {
   // Page to open, or "cookies" for the cookie preferences button
   href: string;
   label?: string;
+  titleClassName?: string;
 };
 
 const ICONS = "/image/privacy-center";
@@ -31,18 +32,21 @@ const ROWS: (PolicyCard | null)[][] = [
       text: "Our online privacy policy explains how we collect, share, use and protect your information when you visit or use any of our websites.",
       image: { src: `${ICONS}/checklist.png`, width: 72, height: 72, ratio: "100%" },
       href: "/safelite-group-privacy-policy",
+      titleClassName: "text-[#DB0020]",
     },
     {
       title: "California privacy policy",
       text: "Residents of California have privacy rights in addition to those outlined in our privacy policy.",
       image: { src: `${ICONS}/california.png`, width: 62, height: 72, ratio: "116.129%" },
       href: "/ccpa-privacy-policy",
+      titleClassName: "text-[#DB0020]",
     },
     {
       title: "Your consumer rights",
       text: "You may have the right to submit consumer requests regarding your privacy.",
       image: { src: `${ICONS}/scales.png`, width: 78, height: 72, ratio: "93.50649%" },
       href: "https://privacyportal.onetrust.com/webform/d3b95a93-e22e-4d4d-a806-482052406557/draft/48f5d98d-2135-41f2-a54a-701815a0247a",
+      titleClassName: "text-[#DB0020]",
     },
   ],
   [
@@ -107,15 +111,21 @@ function Card({ card }: { card: PolicyCard }) {
         </span>
       </div>
       <div className={styles.cardContent}>
-        <h3>
+        <h3 className={card.titleClassName}>
           {card.href === "cookies" ? (
             card.title
           ) : card.href.startsWith("http") ? (
-            <a href={card.href} className="hover:text-[#db0020] transition-colors">
+            <a
+              href={card.href}
+              className={cx(card.titleClassName, "hover:text-[#db0020] transition-colors")}
+            >
               {card.title}
             </a>
           ) : (
-            <Link href={card.href} className="hover:text-[#db0020] transition-colors">
+            <Link
+              href={card.href}
+              className={cx(card.titleClassName, "hover:text-[#db0020] transition-colors")}
+            >
               {card.title}
             </Link>
           )}

@@ -47,7 +47,7 @@
   border-radius: 14px 14px 0 0;
 }
 
-.cardImage > span {
+.cardImage>span {
   flex: 0 0 auto;
 }
 
@@ -69,6 +69,17 @@
   font-weight: 700;
   line-height: 32px;
   text-align: center;
+}
+
+.cardContent h3,
+.cardContent h3 a {
+  color: #DB0020;
+
+}
+
+.cardContent h3 a:hover {
+
+  text-decoration: none;
 }
 
 .cardContent p {
@@ -111,7 +122,7 @@ button.cardLink:hover {
 }
 
 @media (max-width: 767px) {
-  .thirds > .column:nth-child(-n + 2) {
+  .thirds>.column:nth-child(-n + 2) {
     padding-bottom: 10px;
   }
 }

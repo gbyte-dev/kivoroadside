@@ -432,6 +432,102 @@
   }
 }
 
+/* ---------- Inner navigation (page tabs) ---------- */
+
+.innerNav {
+  max-width: 510px;
+  margin: -10px auto 0;
+  padding: 0 15px;
+}
+
+/* Gray line under the tabs */
+.innerNav::after {
+  content: "";
+  display: block;
+  margin: 0 0 20px;
+  border-bottom: 1px solid #cacbcc;
+}
+
+.innerNav ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  background: #fff;
+  line-height: 25px;
+}
+
+.innerNav li {
+  flex: 1 1 auto;
+  margin-left: 15px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.innerNav li:first-child {
+  margin-left: 0;
+}
+
+/* Must follow the link hover rule above: on the reference tabs never underline */
+.innerNav a {
+  font-weight: 400;
+  letter-spacing: 0.75px;
+  color: #525656;
+  text-decoration: none;
+  user-select: none;
+}
+
+/* Current tab: red, kept on one line, with a 5px blue bar under it */
+.innerNav .active a {
+  position: relative;
+  font-weight: 500;
+  color: #db0020;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.innerNav .active a::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: block;
+  height: 5px;
+  margin-top: -5px;
+  background: #0070d1;
+}
+
+@media (max-width: 767px) {
+  .innerNav a {
+    display: block;
+    padding: 0 0 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .innerNav {
+    max-width: 750px;
+  }
+
+  .innerNav ul {
+    justify-content: flex-start;
+    padding-bottom: 10px;
+  }
+
+  .innerNav li {
+    flex: 0 1 auto;
+    margin-left: 50px;
+  }
+
+  .innerNav a {
+    padding-bottom: 10px;
+  }
+
+  .innerNav .active a::after {
+    margin-top: -1px;
+  }
+}
+
 /* ---------- YouTube embed ---------- */
 
 .youtubeWidget {

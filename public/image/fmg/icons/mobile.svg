@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-16"?>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="Layer_1" x="0" y="0" style="enable-background:new 0 0 69.8 29.8" version="1.1" viewBox="0 0 69.8 29.8">
+  <style>
+    .st1{fill:none;stroke:#000;stroke-width:.75;stroke-linecap:round;stroke-linejoin:round}
+  </style>
+  <path d="M61.4 11h3.9c2.1 0 4 1.2 4 3.7v9.2H.3V20C.4 3 3 .4 3 .4h48.4c4.9 2.8 10 10.6 10 10.6" style="fill:#fff" />
+  <path d="M61.4 11h3.9c2.1 0 4 1.2 4 3.7v9.2H.3V20C.4 3 3 .4 3 .4h48.4c4.9 2.8 10 10.6 10 10.6" class="st1" />
+  <path d="M.9 9.9s26.5-.8 46.5 4.5 22 9.5 22 9.5H54.9C28.9 13.4.7 14.4.7 14.4l.2-4.5z" style="fill:#d92d27;stroke:#000;stroke-width:.75;stroke-linecap:round;stroke-linejoin:round" />
+  <path d="M46.2.4V11h16.3" class="st1" />
+  <path d="M58.4 29.4c2.8 0 5-2.2 5-5s-2.2-5-5-5-5 2.2-5 5 2.2 5 5 5zm-48 0c2.8 0 5-2.2 5-5s-2.2-5-5-5-5 2.2-5 5 2.2 5 5 5z" style="fill:#fff;stroke:#000;stroke-width:.75;stroke-linecap:round;stroke-linejoin:round" />
+</svg>
