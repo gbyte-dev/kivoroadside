@@ -56,7 +56,7 @@ export default function OptionButtons({ name, legend, options, value, onChange, 
                           : cx("bg-white text-[#4d5151]", error ? "border-[#db0020]" : "border-[#8e9292]"),
                       )}
                     >
-                      <span className="m-0 text-center">{option.label}</span>
+                      <span className={cx("m-0 text-center leading-6", compact && checked && "font-semibold")}>{option.label}</span>
                       {option.subText && (
                         <span
                           className={cx(

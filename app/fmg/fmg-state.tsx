@@ -2,6 +2,7 @@
 
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
+import type { PartQuestion } from "./api";
 
 export type DamageLocation = "Windshield" | "SideDoor" | "RearWindow";
 export type VehicleSide = "DriverSide" | "PassengerSide";
@@ -15,6 +16,44 @@ export type Vehicle = {
   carId?: string;
   // "CAR", "SUV", "TRUCK", "VAN" or "COMMERCIAL VAN" (from the vehicle lookup)
   category?: string;
+};
+
+// A phone number or email the visitor left to get the quote or save progress
+export type Contact = { method: "phone" | "email"; value: string; serviceUpdates: boolean; promoOffers: boolean };
+
+export type Customer = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  serviceUpdates: boolean;
+  promoOffers: boolean;
+};
+
+export type Appointment = {
+  type: "Mobile" | "Shop";
+  // "2026-10-15"
+  date: string;
+  slot: string;
+  slotLabel: string;
+  // "First stop of the day" adds a fee
+  premium?: boolean;
+  shop?: { id: string; name: string; address: string; phone: string };
+};
+
+export type Vaps = { wipers: boolean; rainRepel: boolean };
+
+// How the visitor chose to pay on the review page
+export type PaymentMethod = "PayNow" | "Afterpay" | "Insurance" | "Later";
+
+export type PieceQuestions ={ location: string; name: string; questions: PartQuestion[] };
+
+export type ChosenPart = {
+  location: string;
+  name: string;
+  partNumber: string;
+  description: string | null;
+  requiresRecalibration: boolean;
 };
 
 export type FmgState = {
@@ -36,15 +75,28 @@ export type FmgState = {
   serviceZip?: string;
   city?: string;
   state?: string;
+  // Questions the parts catalog asks before it can pick a piece's part
+  pieceQuestions?: PieceQuestions[];
+  // Answer chosen for each question, keyed "location-name-sequence"
   partAnswers: Record<string, string>;
+  // The glass parts found for the damaged pieces
+  parts?: ChosenPart[];
   payment?: "Cash" | "Insurance";
   servicePackage?: ServicePackage;
+  // Add-ons left in the cart after the visitor removes some on the review
+  // page (unset: the ones the chosen package includes)
+  vaps?: Vaps;
   oemGlass?: boolean;
   promoCode?: string;
   quoteModalSeen?: boolean;
-  appointment?: { type: "Mobile" | "Shop"; date: string; slot: string; shopId?: string };
+  contact?: Contact;
+  progressSaved?: boolean;
+  appointment?: Appointment;
   address?: { street: string; apt: string; city: string; state: string; zip: string; covered?: "Yes" | "No" };
-  customer?: { firstName: string; lastName: string; email: string; phone: string; textUpdates: boolean; notes: string };
+  customer?: Customer;
+  paymentMethod?: PaymentMethod;
+  // Set once the review page is submitted
+  confirmation?: { number: string; submittedAt: string };
 };
 
 const EMPTY_STATE: FmgState = {

@@ -23,6 +23,9 @@ type DropdownQuestionProps = {
   error?: string;
   // Red border without a message (the locked drop-downs after a failed Continue)
   invalid?: boolean;
+  // A disabled drop-down that still shows its value (the state from the ZIP)
+  lockedValue?: boolean;
+  labelClassName?: string;
   onChange: (value: string) => void;
   className?: string;
 };
@@ -37,26 +40,33 @@ export default function DropdownQuestion({
   disabled = false,
   error,
   invalid = Boolean(error),
+  lockedValue = false,
+  labelClassName,
   onChange,
   className,
 }: DropdownQuestionProps) {
+  const showOptions = !disabled || lockedValue;
   return (
     <div className={cx("mb-6 mt-4", className)}>
-      <label htmlFor={id} aria-label={label} className={cx(SEMIBOLD, "mb-1 inline-block text-base leading-6 text-black")}>
+      <label
+        htmlFor={id}
+        aria-label={label}
+        className={cx(SEMIBOLD, "mb-1 inline-block text-base leading-6 text-black", labelClassName)}
+      >
         {label}
       </label>
       <select
         id={id}
         name={id}
-        value={disabled ? "" : value}
+        value={showOptions ? value : ""}
         disabled={disabled}
         aria-disabled={disabled}
         aria-invalid={invalid}
         onChange={(event) => onChange(event.target.value)}
         className={cx(REGULAR, SELECT_BASE, invalid ? SELECT_ERROR : SELECT_OK)}
       >
-        {!disabled && <option value="">{placeholder}</option>}
-        {!disabled &&
+        {showOptions && <option value="">{placeholder}</option>}
+        {showOptions &&
           options.map((option) => (
             <option key={option} value={option}>
               {option}

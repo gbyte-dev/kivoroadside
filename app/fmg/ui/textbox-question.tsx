@@ -19,6 +19,7 @@ type TextboxQuestionProps = Omit<InputHTMLAttributes<HTMLInputElement>, "onChang
   onChange: (value: string) => void;
   error?: string;
   className?: string;
+  labelClassName?: string;
   inputClassName?: string;
   // Extra controls inside the field (camera or search button)
   children?: ReactNode;
@@ -32,6 +33,7 @@ export default function TextboxQuestion({
   onChange,
   error,
   className,
+  labelClassName,
   inputClassName,
   children,
   ...inputProps
@@ -41,7 +43,7 @@ export default function TextboxQuestion({
       <label
         htmlFor={id}
         aria-label={typeof label === "string" ? label : undefined}
-        className={cx(SEMIBOLD, "mb-1 inline-block text-base leading-6 text-black")}
+        className={cx(SEMIBOLD, "mb-1 inline-block text-base leading-6 text-black", labelClassName)}
       >
         {label}
       </label>
@@ -52,6 +54,7 @@ export default function TextboxQuestion({
           type="text"
           value={value}
           aria-invalid={Boolean(error)}
+          aria-label={typeof label === "string" ? label : undefined}
           onChange={(event) => onChange(event.target.value)}
           className={cx(REGULAR, INPUT_BASE, error ? INPUT_ERROR : INPUT_OK, inputClassName)}
           {...inputProps}

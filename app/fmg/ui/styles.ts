@@ -17,8 +17,9 @@ export const QUESTION_COLUMN =
 // Half width from 768px (Bootstrap col-md-6)
 export const HALF_COLUMN = "w-full shrink-0 px-3 min-[768px]:w-1/2";
 
-// Links inside the funnel ("Back", "Where can I find my VIN?" and similar)
-export const TEXT_LINK = "text-[#0070d1] underline";
+// Links in running text: blue, underlined, and like every link on the
+// reference, lines twice the font size with 4px under them
+export const TEXT_LINK = "pb-1 leading-[2] text-[#0070d1] underline hover:text-[#06577c]";
 
 // Hover ring and keyboard focus ring shared by inputs and option buttons
 export const FIELD_HOVER = "hover:shadow-[0_0_0_4px_#9fcee6]";
