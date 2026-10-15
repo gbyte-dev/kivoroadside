@@ -168,7 +168,7 @@ export default function ContactModal({
             onClick={submit}
             className={cx(
               SEMIBOLD,
-              "mb-6 flex h-12 w-full items-center justify-center rounded-full bg-[#db0020] px-4 py-3 text-white focus-visible:shadow-[0_0_0_3px_#fff,0_0_0_5.5px_#db0020] focus-visible:outline-none",
+              "mb-6 flex h-12 w-full items-center justify-center rounded-full bg-[#db0020] px-4 py-3 leading-6 text-white focus-visible:shadow-[0_0_0_3px_#fff,0_0_0_5.5px_#db0020] focus-visible:outline-none",
             )}
           >
             <span className="leading-6">{submitLabel}</span>
@@ -179,7 +179,7 @@ export default function ContactModal({
               onClick={onSkip}
               className={cx(
                 SEMIBOLD,
-                "mx-auto mb-4 p-0 text-[14px] font-semibold leading-4 text-[#0070d1] hover:text-[#06577c] focus-visible:shadow-[0_0_0_3px_#fff,0_0_0_5.5px_#9fcee6] focus-visible:outline-none min-[768px]:text-base",
+                "mx-auto mb-4 rounded-full p-0 text-[14px] font-semibold leading-4 text-[#0070d1] hover:text-[#06577c] focus-visible:shadow-[0_0_0_3px_#fff,0_0_0_5.5px_#9fcee6] focus-visible:outline-none min-[768px]:text-base",
               )}
             >
               <span>Skip</span>

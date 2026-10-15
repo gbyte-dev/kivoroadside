@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
-import { lookupZip } from "../api";
+import { useState } from "react";
 import { useFmg, useFmgGuard, vehicleName, type FmgState } from "../fmg-state";
 import { backFromServiceZip } from "../order";
 import { findParts } from "../parts";
@@ -11,6 +10,7 @@ import NavBar from "../ui/nav-bar";
 import SubHeader from "../ui/sub-header";
 import TextboxQuestion from "../ui/textbox-question";
 import { useNextStep } from "../ui/use-next-step";
+import { checkServiceZip, type ZipAlert } from "./check-zip";
 
 const hasDamage = (state: FmgState) => Boolean(state.vehicle) && state.damage.locations.length > 0;
 
@@ -22,7 +22,7 @@ export default function ServiceZipForm() {
   const { loading, setLoading, go } = useNextStep();
   const [zip, setZip] = useState(state.serviceZip ?? "");
   const [error, setError] = useState<string>();
-  const [alert, setAlert] = useState<{ heading: string; body: ReactNode }>();
+  const [alert, setAlert] = useState<ZipAlert>();
 
   if (!allowed) return null;
 
@@ -30,21 +30,13 @@ export default function ServiceZipForm() {
     if (!zip) return setError("Please enter your service ZIP");
     if (!/^\d{5}$/.test(zip)) return setError("Please enter a valid service ZIP");
     setLoading(true);
-    const result = await lookupZip(zip).catch(() => null);
-    if (!result?.isValid) {
+    const check = await checkServiceZip(zip);
+    if (!check.ok) {
       setLoading(false);
-      return setAlert({ heading: "ZIP code is not valid.", body: "Please re-enter your correct service ZIP." });
+      return setAlert(check.alert);
     }
-    if (!result.isServiceable) {
-      setLoading(false);
-      return setAlert({
-        heading: `We don't currently provide service within ${zip}.`,
-        body: "Please enter a different ZIP code where you'd like service so we can get you scheduled.",
-      });
-    }
-    const zipPatch = { serviceZip: zip, city: result.city ?? undefined, state: result.state ?? undefined };
-    const { patch, href } = await findParts({ ...state, ...zipPatch }, zip);
-    update({ ...zipPatch, ...patch });
+    const { patch, href } = await findParts({ ...state, ...check.patch }, zip);
+    update({ ...check.patch, ...patch });
     go(href);
   };
 

@@ -83,7 +83,8 @@ export default function AddToCalendar({ event }: { event: CalendarEvent }) {
   return (
     <div className="relative mx-auto table">
       <div className="py-4 text-center">
-        <button type="button" onClick={() => setShow(true)} className="border-0 bg-white">
+        {/* The browser's own 1px 6px button padding stays, as on the reference */}
+        <button type="button" onClick={() => setShow(true)} className="border-0 bg-white px-1.5 py-px text-black">
           <span className="cursor-pointer">
             <Image src="/image/fmg/ui/add-to-calendar.svg" alt="" width={20} height={20} unoptimized className="inline w-5" />
             <span className="ml-[7px] align-middle font-semibold text-[#1574a1] underline">Add to calendar</span>

@@ -8,6 +8,7 @@ import { buildCart, needsRecalibration } from "../pricing";
 import Cart from "../payment-method/cart";
 import { parseKey } from "../scheduling/slots";
 import { FunnelPage, QuestionColumn, Row } from "../ui/layout";
+import { TEXT_LINK } from "../ui/styles";
 import AddToCalendar, { type CalendarEvent } from "./add-to-calendar";
 
 const submitted = (state: FmgState) => Boolean(state.confirmation && state.appointment && state.customer);
@@ -122,8 +123,8 @@ export default function ConfirmationView() {
           </div>
           <div className="pb-[1.5em]">
             <p className="m-0 text-[14px]">
-              A confirmation email was sent to {state.customer.email}. To edit your appointment,&nbsp;visit{" "}
-              <a href="https://myaccount.safelite.com/" target="_blank" rel="noreferrer" className="text-[#0070d1] underline">
+              {`A confirmation email was sent to ${state.customer.email}. To edit your appointment, visit `}
+              <a href="https://myaccount.safelite.com/" target="_blank" rel="noreferrer" className={TEXT_LINK}>
                 mysafelite.com
               </a>
               .

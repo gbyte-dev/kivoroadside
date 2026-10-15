@@ -95,7 +95,8 @@ export default function PackageCard({
             {discounted && (
               <div className="-ml-5 mr-auto mt-1 flex flex-row rounded bg-[#e3f2ea] px-4 py-1 min-[768px]:mt-4">
                 <span className={cx(SEMIBOLD, "text-[14px] font-semibold leading-[1.5] text-[#0c7e47]")}>
-                  Special: Save {money(cash.original! - cash.total)}
+                  {/* Whole dollars without cents, as the reference prints it ("Save $75") */}
+                  {`Special: Save $${Math.round((cash.original! - cash.total) * 100) / 100}`}
                 </span>
               </div>
             )}
